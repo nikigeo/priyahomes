@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ph.customer.model.Customer" table="ph_customer_details">
+        <id name="customerId" type="string">
+            <column name="customer_id" length="40" />
+            <generator class="assigned" />
+        </id>
+        <property name="firstName" type="string">
+            <column name="customer_first_name" length="40" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="customer_last_name" length="40" not-null="true" />
+        </property>
+        <property name="midName" type="string">
+            <column name="customer_mid_name" length="40" not-null="false" />
+        </property>
+        <property name="contactNumber" type="string">
+            <column name="customer_contact_number" length="40" not-null="true" />
+        </property>
+        <property name="age" type="int">
+            <column name="customer_age" />
+        </property>
+        <property name="nonIndian" type="boolean">
+            <column name="non_indian" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
