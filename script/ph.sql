@@ -127,4 +127,4 @@ CREATE TABLE "ph_scan_details" (
   "data_name" VARCHAR(100) NOT NULL,
   "data_blog" TEXT,
   "date_time" TIMESTAMP NOT NULL
-)
+);
