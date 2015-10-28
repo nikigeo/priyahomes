@@ -34,8 +34,8 @@ public class MainController {
 	public ModelAndView homePage() {
 
 		ModelAndView model = new ModelAndView();
-		model.addObject("title", "Spring Security + Hibernate Example");
-		model.addObject("message", "This page is for ROLE_ADMIN only!");
+		model.addObject("title", "Home Page");
+		model.addObject("message", "Admin Home page");
 
 		model.setViewName("homepage");
 
