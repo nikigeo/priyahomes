@@ -27,6 +27,10 @@
 			/WEB-INF/spring-security.xml
 		</param-value>
 	</context-param>
+	<context-param>
+		<param-name>liquibase.changelog</param-name>
+		<param-value>db.changelogs/db.changelog-master.xml</param-value>
+	</context-param>
 
 	<!-- Spring Security -->
 	<filter>
