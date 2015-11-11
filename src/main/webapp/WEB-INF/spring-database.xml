@@ -12,7 +12,7 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:property-placeholder location="classpath:database.properties" />
+	<context:property-placeholder location="classpath:properties/database.properties" />
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -58,7 +58,7 @@
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">

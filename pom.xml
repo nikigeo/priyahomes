@@ -221,7 +221,7 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>${liquibase.version}</version>
                 <configuration>
-					<propertyFile>src/main/resources/database.properties</propertyFile>
+					<propertyFile>src/main/resources/properties/database.properties</propertyFile>
                 </configuration>
                 <executions>
                     <execution>
