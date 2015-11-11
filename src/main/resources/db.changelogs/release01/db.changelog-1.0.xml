@@ -2,22 +2,72 @@
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <changeSet id="1" author="pradeesh">
-        <comment>internal user table</comment>
-        <createTable tableName="ph_internal_users">
-            <column name="username" type="varchar(45)" >
+        <comment>Create user table and admin credentials</comment>
+        <createTable tableName="ph_users">
+            <column name="username" type="VARCHAR(45)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="password" type="varchar(60)" >
+            <column name="password" type="varchar(60)">
                 <constraints nullable="false"/>
             </column>
-            <column name="enabled" type="boolean" defaultValueBoolean="true">
-                <constraints nullable="false"/>
-            </column>
+            <column name="enabled" type="boolean" defaultValueBoolean="false"/>
         </createTable>
-        <rollback>
-            <dropTable tableName="ph_internal_users"/>
-        </rollback>
+        <insert tableName="ph_users" >
+            <column name="username" value="admin"/>
+            <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
+            <column name="enabled" value="true"/>
+        </insert>
     </changeSet>
+    <changeSet id="2" author="Anoop">
+        <comment>Create customer and address tables</comment>
+        <createTable tableName="ph_customer_details">
+            <column name="customer_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customer_first_name" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_last_name" type="VARCHAR(40)"/>
+            <column name="customer_mid_name" type="VARCHAR(40)"/>
+            <column name="customer_contact_number" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer_age" type="INTEGER"/>
+            <column name="non_indian" type="boolean" defaultValueBoolean="false"/>
+        </createTable>
+        <createTable tableName="ph_customer_address">
+            <column name="address_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="house_streetname" type="VARCHAR(100)"/>
+            <column name="house_locality" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone_number" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cutomer_address" type="int"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="cutomer_address"
+                                 baseTableName="ph_customer_address"
+                                 constraintName="fk_customer_address"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="customer_id"
+                                 referencedTableName="ph_customer_details"/>
+
+    </changeSet>
+   
 </databaseChangeLog>

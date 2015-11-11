@@ -3,6 +3,8 @@ package com.ph.users.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ph.customer.model.Customer;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.ph.users.model.User;
@@ -26,6 +28,8 @@ public class UserDaoImpl implements UserDao {
 		}
 
 	}
+
+
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

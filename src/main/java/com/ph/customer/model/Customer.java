@@ -4,23 +4,23 @@
 
 package com.ph.customer.model;
 
-public class Customer {
+import java.util.HashSet;
+import java.util.Set;
 
-    private String customerId;
+public class Customer implements java.io.Serializable{
+
+    private int customerId;
     private String firstName;
     private String lastName;
     private String midName;
     private String contactNumber;
     private int age;
     private boolean nonIndian;
+    private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>(0);
 
-    public String getCustomerId() {
-        return customerId;
-    }
+    public int getCustomerId() { return customerId;  }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
+    public void setCustomerId(int customerId) { this.customerId = customerId; }
 
     public String getFirstName() {
         return firstName;
@@ -69,5 +69,10 @@ public class Customer {
     public void setNonIndian(boolean nonIndian) {
         this.nonIndian = nonIndian;
     }
+
+    public Set<CustomerAddress> getCustomerAddresses() {  return customerAddresses;  }
+
+    public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {  this.customerAddresses = customerAddresses;   }
+
 
 }

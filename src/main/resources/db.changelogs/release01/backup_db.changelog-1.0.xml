@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="1" author="pradeesh">
+        <comment>internal user table</comment>
+        <createTable tableName="ph_internal_users">
+            <column name="username" type="varchar(45)" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="password" type="varchar(60)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean" defaultValueBoolean="true">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="ph_internal_users"/>
+        </rollback>
+    </changeSet>
+    <changeSet id="2" author="anoop">
+        <comment>Dropping and re-creating customer tables to update relationships</comment>
+        <dropTable tableName="ph_customer_address_ph_customer_details" />
+        <dropTable tableName="ph_customer_address" />
+        <dropTable tableName="ph_booking_details" />
+        <dropTable tableName="ph_customer_details" />
+        <dropIndex tableName="ph_customer_address_ph_customer_details" indexName="idx_ph_customer_address_ph_customer_details"/>
+        <dropIndex tableName="ph_booking_details" indexName="idx_ph_booking_details__ph_customer_details"/>
+        
+    </changeSet>
+</databaseChangeLog>

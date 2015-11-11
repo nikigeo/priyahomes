@@ -3,15 +3,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="com.ph.customer.model.Customer" table="ph_customer_details">
-        <id name="customerId" type="string">
+        <id name="customerId" type="int">
             <column name="customer_id" length="40" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <property name="firstName" type="string">
             <column name="customer_first_name" length="40" not-null="true" />
         </property>
         <property name="lastName" type="string">
-            <column name="customer_last_name" length="40" not-null="true" />
+            <column name="customer_last_name" length="40" not-null="false" />
         </property>
         <property name="midName" type="string">
             <column name="customer_mid_name" length="40" not-null="false" />
@@ -25,5 +25,33 @@
         <property name="nonIndian" type="boolean">
             <column name="non_indian" not-null="true" />
         </property>
+        <set name="customerAddresses" table="ph_customer_address" inverse="true" lazy="true" fetch="select" >
+            <key>
+                <column name="cutomer_address" not-null="true" />
+            </key>
+            <one-to-many class="com.ph.customer.model.CustomerAddress"/>
+        </set>
     </class>
+    <class name="com.ph.customer.model.CustomerAddress" table="ph_customer_address">
+        <id name="addressId" type="int">
+            <column name="address_id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="houseStreetName" type="string">
+            <column name="house_streetname" length="100" not-null="false" />
+        </property>
+        <property name="houseLocality" type="string">
+            <column name="house_locality" length="100" not-null="true" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="50" not-null="true" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="50" not-null="true" />
+        </property>
+        <property name="phoneNumber" type="string">
+            <column name="phone_number" length="100" not-null="true" />
+        </property>
+    </class>
+
 </hibernate-mapping>
