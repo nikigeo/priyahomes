@@ -1,0 +1,54 @@
+<div id="addCustomer">
+    <form name="addCustomer" >
+        <p class="required">* Required</p>
+        <fieldset>
+            <legend> Customer Details</legend>
+            <p>
+                <label class="field" for="First Name"><span>*</span>First Name</label>
+                <input type="text" ng-model="customer.firstName" required placeholder="First Name"/>
+
+                <label class="field" for="Last Name">Last Name</label>
+                <input type="text" ng-model="customer.lastName" placeholder="Last Name"/>
+            </p>
+            <p>
+                <label class="field" for="Middle Name">Middle Name</label>
+                <input type="text" ng-model="customer.middleName" placeholder="Middle Name"/>
+            </p>
+            <p>
+                <label class="field" for="Contact Number"><span>*</span>Contact Number</label>
+                <input type="text" ng-model="customer.contactNumber" required placeholder="Contact Number"/>
+            </p>
+            <p>
+                <label class="field" for="Nationality">Indian</label>
+                <input type="checkbox" ng-model="customer.nationality">
+            </p>
+            <p>
+                <label class="field" for="StreetName"><span>*</span>Street Name</label>
+                <input type="text" ng-model="address.houseStreetName" required placeholder="Street Name"/>
+            </p>
+
+            <p>
+                <label class="field" for="HouseLocality"><span>*</span>House Locality</label>
+                <input type="text" ng-model="address.houseLocality" required placeholder="House Locality"/>
+            </p>
+            <p>
+                <label class="field" for="State"><span>*</span>State</label>
+                <input type="text" ng-model="address.state" required placeholder="State"/>
+            </p>
+            <p>
+                <label class="field" for="Country"><span>*</span>Country</label>
+                <input type="text" ng-model="address.country" required placeholder="Country"/>
+            </p>
+            <p>
+                <label class="field" for="PhoneNumber"><span>*</span>Phone Number</label>
+                <input type="text" ng-model="address.phoneNumber" required placeholder="Phone Number"/>
+            </p>
+
+
+            <p>
+                <input type="submit" value="Add Customer"  ng-click="saveCustomer()"/>
+            </p>
+        </fieldset>
+
+    </form>
+</div>

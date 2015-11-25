@@ -5,11 +5,16 @@
 package com.ph.customer.dao;
 
 import com.ph.customer.model.Customer;
+import com.ph.customer.model.CustomerAddress;
+import com.ph.users.model.User;
 import org.apache.commons.collections4.CollectionUtils;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class CustomerDaoImpl implements CustomerDao {
 
@@ -27,6 +32,30 @@ public class CustomerDaoImpl implements CustomerDao {
             return customers.get(0);
         }
         return null;
+    }
+
+    public String insertCustomer(final Customer customer){
+        Integer customerId = null;
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+
+        /*Set<CustomerAddress> customerAddressSet = customer.getCustomerAddresses();
+        Iterator<CustomerAddress> customerAddressIterator = customerAddressSet.iterator();
+        while (customerAddressIterator.hasNext()){
+            CustomerAddress customerAddress = customerAddressIterator.next();
+            customer.getCustomerAddresses().add(customerAddress);
+        }*/
+        customerId = (Integer)session.save(customer);
+        session.getTransaction().commit();
+        return customerId.toString();
+    }
+
+    public List<Customer> findByPhoneNumber(final String contactNumber){
+
+        List<Customer> customersList = new ArrayList<Customer>();
+
+        return customersList = getSessionFactory().getCurrentSession().createQuery("from Customer where contactNumber=?")
+                .setParameter(0, contactNumber).list();
     }
 
     public Customer getCustomerDetailsByContactNumber(String contactNumber) {

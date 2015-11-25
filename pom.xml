@@ -13,8 +13,8 @@
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<spring.version>3.2.8.RELEASE</spring.version>
-		<spring.security.version>3.2.3.RELEASE</spring.security.version>
+		<spring.version>4.1.6.RELEASE</spring.version>
+		<spring.security.version>4.0.1.RELEASE</spring.security.version>
 		<jstl.version>1.2</jstl.version>
 		<mysql.connector.version>5.1.30</mysql.connector.version>
 		<postgres.connector.version>9.1-901-1.jdbc4</postgres.connector.version>
@@ -23,6 +23,7 @@
 		<hibernate.version>4.2.11.Final</hibernate.version>
 		<dbcp.version>1.4</dbcp.version>
 		<servletapi.version>2.5</servletapi.version>
+		<liquibase.version>3.4.1</liquibase.version>
 	</properties>
 
 	<dependencies>
@@ -218,17 +219,14 @@
             <plugin>
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
-                <version>2.0.1</version>
+                <version>${liquibase.version}</version>
                 <configuration>
-                    <changeLogFile>db.changelogs/db.changelog-master.xml</changeLogFile>
-                    <driver>org.postgresql.Driver</driver>
-                    <url>jdbc:postgresql://localhost:5432/postgres</url>
-                    <username>postgres</username>
-                    <password>admin</password>
+					<propertyFile>src/main/resources/properties/database.properties</propertyFile>
                 </configuration>
                 <executions>
                     <execution>
-                        <goals>
+						<phase>process-resources</phase>
+						<goals>
                             <goal>update</goal>
                         </goals>
                     </execution>
