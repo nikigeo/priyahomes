@@ -1,0 +1,17 @@
+<div id="addBuilding">
+    <form name="addBuilding" >
+        <fieldset>
+            <legend>Add Building Details</legend>
+            <p>
+                <label class="field" for="Building Name"><span>*</span>Building Name</label>
+                <input type="text" ng-model="building.name" required placeholder="Building Name"/>
+
+                <label class="field" for="Building Address">Building Address</label>
+                <input type="text" ng-model="building.address" required placeholder="Building Address"/>
+            </p>
+            <p>
+                <input type="submit" value="Add Building"  ng-click="saveBuilding()"/>
+            </p>
+        </fieldset>
+    </form>
+</div>

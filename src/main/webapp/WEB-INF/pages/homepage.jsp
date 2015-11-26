@@ -10,8 +10,10 @@
     <script src="/resources/core/js/angular.min.js"></script>
     <script src="/resources/core/js/angular-route.js"></script>
     <script src="/resources/core/js/app.js"></script>
-    <script src="/resources/core/js/customerService.js"></script>
-    <script src="/resources/core/js/customerController.js"></script>
+    <script src="/resources/core/js/customer/customerService.js"></script>
+    <script src="/resources/core/js/customer/customerController.js"></script>
+    <script src="/resources/core/js/building/buildingService.js"></script>
+    <script src="/resources/core/js/building/buildingDetailsController.js"></script>
 
   </head>
 <body>
@@ -21,6 +23,7 @@
 			<div id="menuLinks">
 				<a href="#/addCustomer">Create Customer</a><hr>
 				<a href="#/search">Search Customer</a><hr>
+				<a href="#/addBuilding">Add New Building</a><hr>
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->

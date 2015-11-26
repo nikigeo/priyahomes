@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.ph.building.model.BuildingDetails" table="ph_building_details">
+        <id name="buildingId" type="int">
+            <column name="building_id" length="40" />
+            <generator class="identity" />
+        </id>
+        <property name="buildingName" type="string">
+            <column name="building_name" length="50" not-null="true" />
+        </property>
+        <property name="buildingAddress" type="string">
+            <column name="building_address" length="1000" not-null="true" />
+        </property>
+    </class>
+
+</hibernate-mapping>

@@ -69,5 +69,18 @@
                                  referencedTableName="ph_customer_details"/>
 
     </changeSet>
+    <changeSet id="3" author="pradeesh">
+        <createTable tableName="ph_building_details">
+            <column name="building_id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="building_name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="building_address" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
    
 </databaseChangeLog>

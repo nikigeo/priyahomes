@@ -15,6 +15,10 @@
                 templateUrl:"/static/customer/searchCustomer.html",
                 controller : "CustomerAddController"
                 })
+            .when("/addBuilding",{
+                templateUrl:"/static/building/addBuilding.html",
+                controller : "AddBuildingController"
+                })
             .otherwise({redirectTo:"/home"});
 
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
