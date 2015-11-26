@@ -13,7 +13,7 @@
     <script src="/resources/core/js/customer/customerService.js"></script>
     <script src="/resources/core/js/customer/customerController.js"></script>
     <script src="/resources/core/js/building/buildingService.js"></script>
-    <script src="/resources/core/js/building/buildingDetailsController.js"></script>
+    <script src="/resources/core/js/building/buildingController.js"></script>
 
   </head>
 <body>

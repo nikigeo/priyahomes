@@ -3,7 +3,7 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var CustomerAddController = function($scope,$log,customer){
+	var CustomerController = function($scope,$log,CustomerService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
@@ -17,11 +17,11 @@
 
 	$scope.saveCustomer = function(){
 		$scope.customerAddresses.push({ 'houseStreetName':$scope.address.houseStreetName,'houseLocality':$scope.address.houseLocality,'state':$scope.address.state,'country':$scope.address.country,'phoneNumber':$scope.address.phoneNumber});
-		customer.addUser($scope.customer,$scope.customerAddresses).then(onSuccess,onError);
+		CustomerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccess,onError);
 	};
 
 	$scope.searchCustomerByContactNumber = function(){
-    		customer.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
+		CustomerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
     };
 	$scope.message = "Hello Angular";
 	$scope.customer=""
@@ -32,6 +32,6 @@
 
 	};
 
-	app.controller("CustomerAddController",CustomerAddController);
+	app.controller("CustomerController",CustomerController);
 
 }());

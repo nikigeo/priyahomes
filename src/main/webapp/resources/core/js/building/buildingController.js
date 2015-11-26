@@ -1,8 +1,8 @@
 (function(){
 
- var app = angular.module("priyahomesaddbuildingpages");
+ var app = angular.module("priyaHomesApp");
 
-	var AddBuildingController = function($scope,$log,building){
+	var BuildingController = function($scope,$log,BuildingService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
@@ -14,13 +14,13 @@
 
 	}
 	$scope.saveBuilding = function(){
-		building.addBuilding($scope.building).then(onSuccess,onError);
+		BuildingService.addBuilding($scope.building).then(onSuccess,onError);
 	};
 
-	$scope.building=""
+	$scope.building="";
 	$scope.result="";
 	};
 
-	app.controller("AddBuildingController",AddBuildingController);
+	app.controller("BuildingController",BuildingController);
 
 }());

@@ -1,6 +1,6 @@
 (function(){
 
-    var customer = function($http){
+    var CustomerService = function($http){
 
         var addUser = function(customer,addressList){
             return $http.post('/v1/ph/customers', {firstName: customer.firstName, lastName:customer.lastName ,contactNumber: customer.contactNumber,nonIndian:customer.nationality,customerAddresses:addressList})
@@ -25,6 +25,7 @@
 
     };
     var app = angular.module("priyaHomesApp");
-    app.factory("customer",customer);
+    //Registering Services
+    app.factory("CustomerService",CustomerService);
 
 }());
