@@ -1,5 +1,5 @@
 CREATE TABLE ph_building (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	name varchar(50) NOT NULL,
 	address1 varchar(100),
 	address2 varchar(100) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE ph_building (
 CREATE INDEX ph_building_pk_idx ON ph_building (id);
 
 CREATE TABLE ph_room_type (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	type varchar(40) NOT NULL,
 	description varchar(250) NOT NULL,
 	rate numeric NOT NULL,
@@ -28,7 +28,7 @@ CREATE INDEX ph_room_type_pk_idx ON ph_room_type (id);
 
 
 CREATE TABLE ph_room (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	roomnumber varchar(15) NOT NULL,
 	building int4 NOT NULL,
 	roomtype int4 NOT NULL,
@@ -44,7 +44,7 @@ CREATE INDEX ph_room_pk_idx ON ph_room (id);
 
 
 CREATE TABLE ph_id_type (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	name varchar(50),
 	CONSTRAINT ph_id_type_pk PRIMARY KEY (id)
 );
@@ -52,7 +52,7 @@ CREATE TABLE ph_id_type (
 CREATE INDEX ph_id_type_pk_idx ON ph_id_type (id);
 
 CREATE TABLE ph_customer_address (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	address1 varchar(150),
 	address2 varchar(150) NOT NULL,
 	state varchar(100) NOT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE ph_customer_address (
 CREATE INDEX ph_customer_address_pk_idx ON ph_customer_address (id);
 
 CREATE TABLE ph_customer (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	firstname varchar(50) NOT NULL,
 	midname varchar(50),
 	lastname varchar(50) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE ph_customer (
 CREATE INDEX ph_customer_pk_idx ON ph_customer (id);
 
 CREATE TABLE ph_payment_type (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	name varchar(50) NOT NULL,
 	CONSTRAINT ph_payment_type_pk PRIMARY KEY (id)
 );
@@ -92,7 +92,7 @@ CREATE TABLE ph_payment_type (
 CREATE INDEX ph_payment_type_pk_idx ON ph_payment_type (id);
 
 CREATE TABLE ph_payment (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	date date NOT NULL,
 	amount numeric NOT NULL,
 	paymenttype int4 NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE ph_payment (
 CREATE INDEX ph_payment_pk_idx ON ph_payment (id);
 
 CREATE TABLE ph_booking (
-	id int4 NOT NULL,
+	id serial NOT NULL,
 	startdate date NOT NULL,
 	enddate date NOT NULL,
 	room int4 NOT NULL,
