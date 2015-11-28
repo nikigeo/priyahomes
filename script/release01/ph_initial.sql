@@ -1,15 +1,15 @@
-CREATE TABLE ph_building (
+CREATE TABLE ph_buildings (
 	id serial NOT NULL,
 	name varchar(50) NOT NULL,
 	address1 varchar(100),
 	address2 varchar(100) NOT NULL,
 	pincode varchar(10) NOT NULL,
-	CONSTRAINT ph_building_pk PRIMARY KEY (id)
+	CONSTRAINT ph_buildings_pk PRIMARY KEY (id)
 );
 
-CREATE INDEX ph_building_pk_idx ON ph_building (id);
+CREATE INDEX ph_buildings_pk_idx ON ph_buildings (id);
 
-CREATE TABLE ph_room_type (
+CREATE TABLE ph_room_types (
 	id serial NOT NULL,
 	type varchar(40) NOT NULL,
 	description varchar(250) NOT NULL,
@@ -21,13 +21,13 @@ CREATE TABLE ph_room_type (
 	ac bool,
 	tv bool,
 	wifi bool,
-	CONSTRAINT ph_room_type_pk PRIMARY KEY (id)
+	CONSTRAINT ph_room_types_pk PRIMARY KEY (id)
 );
 
-CREATE INDEX ph_room_type_pk_idx ON ph_room_type (id);
+CREATE INDEX ph_room_types_pk_idx ON ph_room_types (id);
 
 
-CREATE TABLE ph_room (
+CREATE TABLE ph_rooms (
 	id serial NOT NULL,
 	roomnumber varchar(15) NOT NULL,
 	building int4 NOT NULL,
@@ -35,24 +35,24 @@ CREATE TABLE ph_room (
 	description varchar(250),
 	rate numeric,
 	isavailable bool NOT NULL,
-	CONSTRAINT ph_room_pk PRIMARY KEY (id),
-	CONSTRAINT ph_room_ph_building_fk FOREIGN KEY (building) REFERENCES ph_building(id),
-	CONSTRAINT ph_room_ph_room_type_fk FOREIGN KEY (roomtype) REFERENCES ph_room_type(id)
+	CONSTRAINT ph_rooms_pk PRIMARY KEY (id),
+	CONSTRAINT ph_rooms_ph_buildings_fk FOREIGN KEY (building) REFERENCES ph_buildings(id),
+	CONSTRAINT ph_rooms_ph_room_types_fk FOREIGN KEY (roomtype) REFERENCES ph_room_types(id)
 );
 
-CREATE INDEX ph_room_pk_idx ON ph_room (id);
+CREATE INDEX ph_rooms_pk_idx ON ph_rooms (id);
 
 
-CREATE TABLE ph_verification_id_type (
+CREATE TABLE ph_verification_id_types (
 	id serial NOT NULL,
 	name varchar(50),
 	description varchar(100),
-	CONSTRAINT ph_verification_id_type_pk PRIMARY KEY (id)
+	CONSTRAINT ph_verification_id_types_pk PRIMARY KEY (id)
 );
 
-CREATE INDEX ph_verification_id_type_pk_idx ON ph_verification_id_type (id);
+CREATE INDEX ph_verification_id_types_pk_idx ON ph_verification_id_types (id);
 
-CREATE TABLE ph_customer (
+CREATE TABLE ph_customers (
 	id serial NOT NULL,
 	firstname varchar(50) NOT NULL,
 	midname varchar(50),
@@ -64,11 +64,11 @@ CREATE TABLE ph_customer (
 	indian bool NOT NULL,
 	verificationidtype int4,
 	verificationrefnumber varchar(50),
-	CONSTRAINT ph_customer_pk PRIMARY KEY (id),
-	CONSTRAINT ph_customer_ph_id_type_fk FOREIGN KEY (verificationidtype) REFERENCES ph_verification_id_type(id)
+	CONSTRAINT ph_customers_pk PRIMARY KEY (id),
+	CONSTRAINT ph_customers_ph_id_type_fk FOREIGN KEY (verificationidtype) REFERENCES ph_verification_id_types(id)
 );
 
-CREATE INDEX ph_customer_pk_idx ON ph_customer (id);
+CREATE INDEX ph_customers_pk_idx ON ph_customers (id);
 
 CREATE TABLE ph_customer_address (
 	id serial NOT NULL,
@@ -78,45 +78,45 @@ CREATE TABLE ph_customer_address (
 	country varchar(100) NOT NULL,
 	pincode varchar(15) NOT NULL,
 	customer int4 NOT NULL,
-	CONSTRAINT ph_customer_ph_customer_address_fk FOREIGN KEY (customer) REFERENCES ph_customer(id),
+	CONSTRAINT ph_customers_ph_customer_address_fk FOREIGN KEY (customer) REFERENCES ph_customers(id),
 	CONSTRAINT ph_customer_address_pk PRIMARY KEY (id)
 );
 
 CREATE INDEX ph_customer_address_pk_idx ON ph_customer_address (id);
 
-CREATE TABLE ph_payment_type (
+CREATE TABLE ph_payment_types (
 	id serial NOT NULL,
 	name varchar(50) NOT NULL,
-	CONSTRAINT ph_payment_type_pk PRIMARY KEY (id)
+	CONSTRAINT ph_payment_types_pk PRIMARY KEY (id)
 );
 
-CREATE INDEX ph_payment_type_pk_idx ON ph_payment_type (id);
+CREATE INDEX ph_payment_types_pk_idx ON ph_payment_types (id);
 
-CREATE TABLE ph_payment (
+CREATE TABLE ph_payments (
 	id serial NOT NULL,
 	date date NOT NULL,
 	amount numeric NOT NULL,
 	paymenttype int4 NOT NULL,
-	paymentrefnumber varchar(5),
-	CONSTRAINT ph_payment_pk PRIMARY KEY (id),
-	CONSTRAINT ph_payment_ph_payment_type_fk FOREIGN KEY (paymenttype) REFERENCES ph_payment_type(id)
+	paymentrefnumber varchar(50),
+	CONSTRAINT ph_payments_pk PRIMARY KEY (id),
+	CONSTRAINT ph_payments_ph_payment_types_fk FOREIGN KEY (paymenttype) REFERENCES ph_payment_types(id)
 );
 
-CREATE INDEX ph_payment_pk_idx ON ph_payment (id);
+CREATE INDEX ph_payments_pk_idx ON ph_payments (id);
 
-CREATE TABLE ph_booking (
+CREATE TABLE ph_bookings (
 	id serial NOT NULL,
 	startdate date NOT NULL,
 	enddate date NOT NULL,
 	room int4 NOT NULL,
 	customer int4 NOT NULL,
 	status varchar(2) NOT NULL,
-	payment int4 NOT NULL,
-	CONSTRAINT ph_booking_pk PRIMARY KEY (id),
-	CONSTRAINT ph_booking_ph_customer_fk FOREIGN KEY (customer) REFERENCES ph_customer(id),
-	CONSTRAINT ph_booking_ph_payment_fk FOREIGN KEY (payment) REFERENCES ph_payment(id),
-	CONSTRAINT ph_booking_ph_room_fk FOREIGN KEY (room) REFERENCES ph_room(id)
+	payment int4,
+	CONSTRAINT ph_bookings_pk PRIMARY KEY (id),
+	CONSTRAINT ph_bookings_ph_customers_fk FOREIGN KEY (customer) REFERENCES ph_customers(id),
+	CONSTRAINT ph_bookings_ph_payments_fk FOREIGN KEY (payment) REFERENCES ph_payments(id),
+	CONSTRAINT ph_bookings_ph_rooms_fk FOREIGN KEY (room) REFERENCES ph_rooms(id)
 );
 
-CREATE INDEX ph_booking_pk_idx ON ph_booking (id);
+CREATE INDEX ph_bookings_pk_idx ON ph_bookings (id);
 

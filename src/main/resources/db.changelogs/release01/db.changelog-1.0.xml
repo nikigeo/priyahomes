@@ -4,70 +4,269 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
-    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
     <changeSet id="1" author="pradeesh">
         <comment>Create user table and admin credentials</comment>
-        <createTable tableName="ph_users">
-            <column name="username" type="VARCHAR(45)">
+        <createTable tableName="ph_internal_users">
+            <column name="username" type="VARCHAR(50)">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="password" type="varchar(60)">
+            <column name="password" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
             <column name="enabled" type="boolean" defaultValueBoolean="false"/>
         </createTable>
-        <insert tableName="ph_users" >
+        <insert tableName="ph_internal_users" >
             <column name="username" value="admin"/>
             <column name="password" value="$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y"/>
             <column name="enabled" value="true"/>
         </insert>
     </changeSet>
-    <changeSet id="2" author="Anoop">
-        <comment>Create customer and address tables</comment>
-        <createTable tableName="ph_customer_details">
-            <column name="customer_id" type="int" autoIncrement="true">
+    <changeSet id="2" author="pradeesh" failOnError="true">
+        <comment>Create building table</comment>
+        <createTable tableName="ph_buildings">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="customer_first_name" type="VARCHAR(40)">
+            <column name="name" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="customer_last_name" type="VARCHAR(40)"/>
-            <column name="customer_mid_name" type="VARCHAR(40)"/>
-            <column name="customer_contact_number" type="VARCHAR(40)">
+            <column name="address1" type="varchar(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="address2" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="customer_age" type="INTEGER"/>
-            <column name="non_indian" type="boolean" defaultValueBoolean="false"/>
+            <column name="pincode" type="varchar(10)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-        <createTable tableName="ph_customer_address">
-            <column name="address_id" type="int" autoIncrement="true">
+    </changeSet>
+    <changeSet id="3" author="pradeesh" failOnError="true">
+        <comment>Create room type table</comment>
+        <createTable tableName="ph_room_types">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="house_streetname" type="VARCHAR(100)"/>
-            <column name="house_locality" type="VARCHAR(100)">
+            <column name="type" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="state" type="VARCHAR(50)">
+            <column name="description" type="varchar(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="country" type="VARCHAR(50)">
+            <column name="rate" type="number">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone_number" type="VARCHAR(100)">
+            <column name="numberofbedroom" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="cutomer_address" type="int"/>
+            <column name="numberofaccomadate" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numberoftoilet" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kitchen" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ac" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tv" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="wifi" type="boolean">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="cutomer_address"
-                                 baseTableName="ph_customer_address"
-                                 constraintName="fk_customer_address"
+    </changeSet>
+    <changeSet id="4" author="pradeesh" failOnError="true">
+        <comment>Create room table</comment>
+        <createTable tableName="ph_rooms">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="roomnumber" type="varchar(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="building" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roomtype" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(250)"/>
+            <column name="rate" type="number"/>
+            <column name="isavailable" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="ph_rooms"
+                                 baseColumnNames="building"
+                                 constraintName="ph_rooms_ph_buildings_fk"
+                                 referencedTableName="ph_buildings"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ph_rooms"
+                                 baseColumnNames="roomtype"
+                                 constraintName="ph_rooms_ph_room_types_fk"
+                                 referencedTableName="ph_room_types"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="5" author="Anoop" failOnError="true">
+        <comment>Create tables for verification id type</comment>
+        <createTable tableName="ph_verification_id_types">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(100)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="Anoop" failOnError="true">
+        <comment>Create customer table</comment>
+        <createTable tableName="ph_customers">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="lastname" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="midname" type="VARCHAR(50)"/>
+            <column name="dob" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contactnumber" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emergencycontact" type="VARCHAR(15)"/>
+            <column name="indian" type="boolean" defaultValueBoolean="true"/>
+            <column name="verificationidtype" type="int"/>
+            <column name="verificationrefnumber" type="VARCHAR(50)"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="verificationidtype"
+                                 baseTableName="ph_customers"
+                                 constraintName="ph_customers_ph_verification_id_types_fk"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
-                                 referencedColumnNames="customer_id"
-                                 referencedTableName="ph_customer_details"/>
-
+                                 referencedColumnNames="id"
+                                 referencedTableName="ph_verification_id_types"/>
     </changeSet>
-   
+    <changeSet id="7" author="Anoop" failOnError="true">
+        <comment>Create customer address table</comment>
+        <createTable tableName="ph_customer_address">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="address1" type="VARCHAR(150)"/>
+            <column name="address2" type="VARCHAR(150)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="state" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pincode" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="customer"
+                                 baseTableName="ph_customer_address"
+                                 constraintName="ph_customer_address_ph_customers_fk"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ph_customers"/>
+    </changeSet>
+    <changeSet id="8" author="Pradeesh" failOnError="true">
+        <comment>Create payment type</comment>
+        <createTable tableName="ph_payment_types">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="Pradeesh" failOnError="true">
+        <comment>Create payment table</comment>
+        <createTable tableName="ph_payments">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paymenttype" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ph_payments_pk" type="varchar(50)"/>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="ph_payments"
+                                 baseColumnNames="paymenttype"
+                                 constraintName="ph_payments_ph_payment_types_fk"
+                                 referencedTableName="ph_payment_types"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="10" author="Pradeesh" failOnError="true">
+        <createTable tableName="ph_bookings">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="startdate" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enddate" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="customer" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="payment" type="int">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="ph_bookings"
+                                 baseColumnNames="room"
+                                 constraintName="ph_bookings_ph_rooms_fk"
+                                 referencedTableName="ph_rooms"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ph_bookings"
+                                 baseColumnNames="customer"
+                                 constraintName="ph_bookings_ph_customers_fk"
+                                 referencedTableName="ph_customers"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ph_bookings"
+                                 baseColumnNames="payment"
+                                 constraintName="ph_bookings_ph_payments_fk"
+                                 referencedTableName="ph_payments"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 </databaseChangeLog>
