@@ -43,25 +43,14 @@ CREATE TABLE ph_room (
 CREATE INDEX ph_room_pk_idx ON ph_room (id);
 
 
-CREATE TABLE ph_id_type (
+CREATE TABLE ph_verification_id_type (
 	id serial NOT NULL,
 	name varchar(50),
-	CONSTRAINT ph_id_type_pk PRIMARY KEY (id)
+	description varchar(100),
+	CONSTRAINT ph_verification_id_type_pk PRIMARY KEY (id)
 );
 
-CREATE INDEX ph_id_type_pk_idx ON ph_id_type (id);
-
-CREATE TABLE ph_customer_address (
-	id serial NOT NULL,
-	address1 varchar(150),
-	address2 varchar(150) NOT NULL,
-	state varchar(100) NOT NULL,
-	country varchar(100) NOT NULL,
-	pincode varchar(15) NOT NULL,
-	CONSTRAINT ph_customer_address_pk PRIMARY KEY (id)
-);
-
-CREATE INDEX ph_customer_address_pk_idx ON ph_customer_address (id);
+CREATE INDEX ph_verification_id_type_pk_idx ON ph_verification_id_type (id);
 
 CREATE TABLE ph_customer (
 	id serial NOT NULL,
@@ -75,13 +64,25 @@ CREATE TABLE ph_customer (
 	indian bool NOT NULL,
 	verificationidtype int4,
 	verificationrefnumber varchar(50),
-	address int4 NOT NULL,
 	CONSTRAINT ph_customer_pk PRIMARY KEY (id),
-	CONSTRAINT ph_customer_ph_customer_address_fk FOREIGN KEY (address) REFERENCES ph_customer_address(id),
-	CONSTRAINT ph_customer_ph_id_type_fk FOREIGN KEY (verificationidtype) REFERENCES ph_id_type(id)
+	CONSTRAINT ph_customer_ph_id_type_fk FOREIGN KEY (verificationidtype) REFERENCES ph_verification_id_type(id)
 );
 
 CREATE INDEX ph_customer_pk_idx ON ph_customer (id);
+
+CREATE TABLE ph_customer_address (
+	id serial NOT NULL,
+	address1 varchar(150),
+	address2 varchar(150) NOT NULL,
+	state varchar(100) NOT NULL,
+	country varchar(100) NOT NULL,
+	pincode varchar(15) NOT NULL,
+	customer int4 NOT NULL,
+	CONSTRAINT ph_customer_ph_customer_address_fk FOREIGN KEY (customer) REFERENCES ph_customer(id),
+	CONSTRAINT ph_customer_address_pk PRIMARY KEY (id)
+);
+
+CREATE INDEX ph_customer_address_pk_idx ON ph_customer_address (id);
 
 CREATE TABLE ph_payment_type (
 	id serial NOT NULL,
