@@ -22,51 +22,81 @@
             <column name="enabled" value="true"/>
         </insert>
     </changeSet>
-    <changeSet id="2" author="Anoop">
-        <comment>Create customer and address tables</comment>
-        <createTable tableName="ph_customer_details">
-            <column name="customer_id" type="int" autoIncrement="true">
+    <changeSet id="2" author="Anoop" failOnError="true">
+        <comment>Create tables ph_customer_verification,ph_customer_details,ph_customer_address</comment>
+        <createTable tableName="ph_customer_verification">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="customer_first_name" type="VARCHAR(40)">
+            <column name="verification_type" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="customer_last_name" type="VARCHAR(40)"/>
-            <column name="customer_mid_name" type="VARCHAR(40)"/>
-            <column name="customer_contact_number" type="VARCHAR(40)">
+            <column name="verification_desc" type="VARCHAR(100)"/>
+        </createTable>
+        <createTable tableName="ph_customer_details">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="firstname" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
-            <column name="customer_age" type="INTEGER"/>
-            <column name="non_indian" type="boolean" defaultValueBoolean="false"/>
+            <column name="lastname" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="midname" type="VARCHAR(50)"/>
+            <column name="dob" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contactnumber" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="emergencycontact" type="VARCHAR(15)"/>
+            <column name="indian" type="boolean" defaultValueBoolean="true"/>
+            <column name="verificationidtype" type="int"/>
+            <column name="verificationrefnumber" type="VARCHAR(50)"/>
         </createTable>
         <createTable tableName="ph_customer_address">
-            <column name="address_id" type="int" autoIncrement="true">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="house_streetname" type="VARCHAR(100)"/>
-            <column name="house_locality" type="VARCHAR(100)">
+            <column name="address1" type="VARCHAR(150)"/>
+            <column name="address2" type="VARCHAR(150)">
                 <constraints nullable="false"/>
             </column>
-            <column name="state" type="VARCHAR(50)">
+            <column name="state" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="country" type="VARCHAR(50)">
+            <column name="country" type="VARCHAR(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="phone_number" type="VARCHAR(100)">
+            <column name="pincode" type="VARCHAR(15)">
                 <constraints nullable="false"/>
             </column>
-            <column name="cutomer_address" type="int"/>
+            <column name="cutomer_id" type="int">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="cutomer_address"
+        <addForeignKeyConstraint baseColumnNames="cutomer_id"
                                  baseTableName="ph_customer_address"
                                  constraintName="fk_customer_address"
                                  deferrable="true"
                                  initiallyDeferred="true"
                                  onDelete="CASCADE"
                                  onUpdate="RESTRICT"
-                                 referencedColumnNames="customer_id"
+                                 referencedColumnNames="id"
                                  referencedTableName="ph_customer_details"/>
+        <addForeignKeyConstraint baseColumnNames="verificationidtype"
+                                 baseTableName="ph_customer_details"
+                                 constraintName="fk_customer_verification"
+                                 deferrable="true"
+                                 initiallyDeferred="true"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ph_customer_verification"/>
 
     </changeSet>
    

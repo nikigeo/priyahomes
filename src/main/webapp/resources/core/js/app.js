@@ -11,6 +11,10 @@
                 templateUrl:"/static/home.html",
                 controller : "CustomerAddController"
                 })
+            .when("/addVerificationType",{
+                templateUrl:"/static/verificationType/addVerificationType.html",
+                controller : "VerificationTypeController"
+                })
             .when("/search",{
                 templateUrl:"/static/customer/searchCustomer.html",
                 controller : "CustomerAddController"

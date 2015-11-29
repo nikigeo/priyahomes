@@ -26,10 +26,15 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.ph.admin.verification.model.VerificationType</value>
+			</list>
+		</property>
 		<property name="mappingResources">
 			<list>
 				<value>orm/Ph.users.hbm.xml</value>
-				<value>orm/Ph.customer.hbm.xml</value>
+				<!--<value>orm/Ph.customer.hbm.xml</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -39,6 +44,7 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+
 	</bean>
 
 	<bean id="userDao" class="com.ph.users.dao.UserDaoImpl">

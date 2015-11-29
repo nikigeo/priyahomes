@@ -4,37 +4,43 @@
 <hibernate-mapping>
     <class name="com.ph.customer.model.Customer" table="ph_customer_details">
         <id name="customerId" type="int">
-            <column name="customer_id" length="40" />
+            <column name="id" length="40" />
             <generator class="identity" />
         </id>
         <property name="firstName" type="string">
-            <column name="customer_first_name" length="40" not-null="true" />
+            <column name="firstname" length="50" not-null="true" />
         </property>
         <property name="lastName" type="string">
-            <column name="customer_last_name" length="40" not-null="false" />
+            <column name="lastname" length="50" not-null="false" />
         </property>
         <property name="midName" type="string">
-            <column name="customer_mid_name" length="40" not-null="false" />
+            <column name="midname" length="50" not-null="true" />
         </property>
+        <property name="dob" type="date" column="dob" not-null="true" />
+        <property name="gender" type="string" column="gender" not-null="true"  length="1"/>
         <property name="contactNumber" type="string">
-            <column name="customer_contact_number" length="40" not-null="true" />
+            <column name="contactnumber" length="15" not-null="true" />
         </property>
-        <property name="age" type="int">
-            <column name="customer_age" />
-        </property>
+        <property name="emergencyContact" type="string" column="emergencycontact" not-null="false"  length="15"/>
         <property name="nonIndian" type="boolean">
-            <column name="non_indian" not-null="true" />
+            <column name="indian" not-null="true" />
         </property>
+
+
+        <property name="verificationRefNumber" type="string">
+            <column name="verificationrefnumber" length="50" not-null="false" />
+        </property>
+
         <set name="customerAddresses" table="ph_customer_address" inverse="true" lazy="true" fetch="select" >
             <key>
-                <column name="cutomer_address" not-null="true" />
+                <column name="cutomer_id" not-null="true" />
             </key>
             <one-to-many class="com.ph.customer.model.CustomerAddress"/>
         </set>
     </class>
     <class name="com.ph.customer.model.CustomerAddress" table="ph_customer_address">
         <id name="addressId" type="int">
-            <column name="address_id"/>
+            <column name="id"/>
             <generator class="identity"/>
         </id>
         <property name="houseStreetName" type="string">

@@ -21,8 +21,22 @@
 	};
 
 	$scope.searchCustomerByContactNumber = function(){
-    		customer.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
+		customer.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
     };
+
+
+    $scope.list = [{
+            id: 27,
+            name: "loruth water point",
+            latitude: 4.453488123,
+            longitude: 35.36021409
+        },
+        {
+            id: 28,
+            name: "kibish",
+            latitude: 5.286289986,
+            longitude: 35.82917452
+        }];
 	$scope.message = "Hello Angular";
 	$scope.customer=""
 	$scope.result="";
