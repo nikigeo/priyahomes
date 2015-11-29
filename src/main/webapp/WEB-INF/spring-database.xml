@@ -30,6 +30,7 @@
 			<list>
 				<value>orm/Ph.users.hbm.xml</value>
 				<value>orm/Ph.customer.hbm.xml</value>
+				<value>orm/ph.buildings.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -47,6 +48,9 @@
 	<bean id="customerDao" class="com.ph.customer.dao.CustomerDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	<bean id="buildingDao" class="com.ph.admin.building.dao.BuildingDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 
 	<bean id="myUserDetailsService" class="com.ph.users.service.MyUserDetailsService">
 		<property name="userDao" ref="userDao" />
@@ -54,6 +58,9 @@
 
 	<bean id="customerService" class="com.ph.customer.service.CustomerServiceImpl">
 		<property name="customerDao" ref="customerDao" />
+	</bean>
+	<bean id="buildingService" class="com.ph.admin.building.service.BuildingServiceImpl">
+		<property name="buildingDao" ref="buildingDao" />
 	</bean>
 
 	<bean id="transactionManager"
