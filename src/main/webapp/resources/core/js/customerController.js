@@ -9,9 +9,13 @@
 		$scope.result = data;
 		$log.info("Result after webservice CustomerCreation call "+data);
 	}
+	var onSuccessVerificationTypes = function(data){
+		$scope.verificationTypes = data;
+		$log.info("Result after webservice getAllVerificationTypes call "+data);
+	}
 
 	var onError = function(reason){
-		$scope.result = "Error retrieving data";
+		$log.info("Error retrieving data "+reason);
 
 	}
 
@@ -24,19 +28,14 @@
 		customer.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
     };
 
+    var getVerificationTypes = function(){
+		customer.getAllVerificationTypes().then(onSuccessVerificationTypes,onError);
+	};
+	getVerificationTypes();
 
-    $scope.list = [{
-            id: 27,
-            name: "loruth water point",
-            latitude: 4.453488123,
-            longitude: 35.36021409
-        },
-        {
-            id: 28,
-            name: "kibish",
-            latitude: 5.286289986,
-            longitude: 35.82917452
-        }];
+
+
+
 	$scope.message = "Hello Angular";
 	$scope.customer=""
 	$scope.result="";

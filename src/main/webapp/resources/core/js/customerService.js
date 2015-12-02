@@ -10,17 +10,25 @@
 
         };
 
-        var searchCustomerByContactNumber = function(contactNumber){
-            return $http.get('/v1/ph/customers/findByPhoneNumber/'+contactNumber)
-            .then(function(response){
-                return response.data;
-                });
+    var searchCustomerByContactNumber = function(contactNumber){
+        return $http.get('/v1/ph/customers/findByPhoneNumber/'+contactNumber)
+        .then(function(response){
+            return response.data;
+            });
 
-                };
+        };
+    var getAllVerificationTypes = function(){
+        return $http.get('/v1/ph/admin/VerificationType/getAll')
+        .then(function(response){
+            return response.data;
+
+        });
+        };
 
         return{
             addUser:addUser,
-            searchCustomerByContactNumber:searchCustomerByContactNumber
+            searchCustomerByContactNumber:searchCustomerByContactNumber,
+            getAllVerificationTypes:getAllVerificationTypes
         };
 
     };
