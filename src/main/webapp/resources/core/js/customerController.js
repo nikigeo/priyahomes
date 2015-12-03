@@ -7,7 +7,7 @@
 
 	var onSuccess = function(data){
 		$scope.result = data;
-		$log.info("Result after webservice CustomerCreation call "+data);
+		$log.info("Result after webservice call "+data);
 	}
 	var onSuccessVerificationTypes = function(data){
 		$scope.verificationTypes = data;
@@ -16,10 +16,13 @@
 
 	var onSuccessCustomerCreation = function(data){
 		$scope.customerCreatedId = data;
+		$scope.customerAddresses = [];
 		$scope.customerAddresses.length = 0;
 		$scope.customer="";
+		$scope.address="";
 		$log.info("Result after webservice CustomerCreation call "+data);
     	}
+
 
 	var onError = function(reason){
 		$log.info("Error retrieving data "+reason);
