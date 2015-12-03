@@ -14,14 +14,22 @@
 		$log.info("Result after webservice getAllVerificationTypes call "+data);
 	}
 
+	var onSuccessCustomerCreation = function(data){
+		$scope.customerCreatedId = data;
+		$scope.customerAddresses.length = 0;
+		$scope.customer="";
+		$log.info("Result after webservice CustomerCreation call "+data);
+    	}
+
 	var onError = function(reason){
 		$log.info("Error retrieving data "+reason);
 
 	}
 
 	$scope.saveCustomer = function(){
-		$scope.customerAddresses.push({ 'houseStreetName':$scope.address.houseStreetName,'houseLocality':$scope.address.houseLocality,'state':$scope.address.state,'country':$scope.address.country,'phoneNumber':$scope.address.phoneNumber});
-		customer.addUser($scope.customer,$scope.customerAddresses).then(onSuccess,onError);
+		$scope.customerAddresses.push({ 'address1':$scope.address.address1,'address2':$scope.address.address2,'state':$scope.address.state,'country':$scope.address.country,'pinCode':$scope.address.pincode});
+		customer.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
+
 	};
 
 	$scope.searchCustomerByContactNumber = function(){
@@ -33,11 +41,8 @@
 	};
 	getVerificationTypes();
 
-
-
-
 	$scope.message = "Hello Angular";
-	$scope.customer=""
+	$scope.customer="";
 	$scope.result="";
 	$scope.customerSortOrder="+firstName";
 	$scope.address="";

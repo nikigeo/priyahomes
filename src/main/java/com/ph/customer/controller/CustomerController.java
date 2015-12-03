@@ -29,12 +29,9 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public ModelAndView createEmployee(@RequestBody Customer  customer)
+    public String createEmployee(@RequestBody Customer  customer)
     {
-        customerApiFacade.insertCustomer(customer);
-        ModelAndView model = new ModelAndView();
-        model.setViewName("homepage");
-        return model;
+        return customerApiFacade.insertCustomer(customer);
     }
 
     @RequestMapping(value = "/findByPhoneNumber/{customerPhoneNumber}", method = RequestMethod.GET)
