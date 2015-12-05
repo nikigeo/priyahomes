@@ -3,9 +3,13 @@ package com.ph.admin.building.dao;
 import com.ph.admin.building.model.Building;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BuildingDaoImpl implements BuildingDao {
 
+    @Autowired(required = true)
     private SessionFactory sessionFactory;
 
     public SessionFactory getSessionFactory() {

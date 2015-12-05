@@ -3,7 +3,7 @@ package com.ph.admin.verification.model;
 import javax.persistence.*;
 
 /**
- * Created by mozanta on 28/11/15.
+ * Created by anoop pius on 28/11/15.
  */
 @Entity
 @Table(name="ph_verification_id_types")

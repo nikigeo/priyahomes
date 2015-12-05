@@ -31,13 +31,12 @@
 				<value>com.ph.admin.verification.model.VerificationType</value>
 				<value>com.ph.customer.model.Customer</value>
 				<value>com.ph.customer.model.CustomerAddress</value>
+				<value>com.ph.admin.building.model.Building</value>
 			</list>
 		</property>
 		<property name="mappingResources">
 			<list>
 				<value>orm/Ph.users.hbm.xml</value>
-				<value>orm/ph.buildings.hbm.xml</value>
-				<!--<value>orm/Ph.customer.hbm.xml</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -53,14 +52,8 @@
 	<bean id="userDao" class="com.ph.users.dao.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="buildingDao" class="com.ph.admin.building.dao.BuildingDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
 	<bean id="myUserDetailsService" class="com.ph.users.service.MyUserDetailsService">
 		<property name="userDao" ref="userDao" />
-	</bean>
-	<bean id="buildingService" class="com.ph.admin.building.service.BuildingServiceImpl">
-		<property name="buildingDao" ref="buildingDao" />
 	</bean>
 
 	<bean id="transactionManager"

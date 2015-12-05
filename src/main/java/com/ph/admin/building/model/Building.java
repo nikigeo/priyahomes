@@ -1,10 +1,25 @@
 package com.ph.admin.building.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="ph_buildings")
 public class Building {
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "address1")
     private String address1;
+
+    @Column(name = "address2")
     private String address2;
+
+    @Column(name = "pincode")
     private String pincode;
 
     public int getId() {

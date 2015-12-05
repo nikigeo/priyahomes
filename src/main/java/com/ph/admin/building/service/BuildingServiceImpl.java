@@ -3,8 +3,14 @@ package com.ph.admin.building.service;
 
 import com.ph.admin.building.dao.BuildingDao;
 import com.ph.admin.building.model.Building;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BuildingServiceImpl implements BuildingService {
+
+    @Autowired(required = true)
+    private BuildingDao buildingDao;
 
     public BuildingDao getBuildingDao() {
         return buildingDao;
@@ -14,7 +20,7 @@ public class BuildingServiceImpl implements BuildingService {
         this.buildingDao = buildingDao;
     }
 
-    private BuildingDao buildingDao;
+
     public int insertBuilding(final Building building) {
         return buildingDao.insertBuilding(building);
     }
