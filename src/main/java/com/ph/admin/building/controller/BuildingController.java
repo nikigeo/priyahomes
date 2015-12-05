@@ -19,11 +19,12 @@ public class BuildingController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public ModelAndView insertBuilding(@RequestBody Building building)
+    public Building insertBuilding(@RequestBody Building building)
     {
-        buildingApiFacade.insertBuilding(building);
-        ModelAndView model = new ModelAndView();
-        model.setViewName("homepage");
-        return model;
+        int buildingId = buildingApiFacade.insertBuilding(building);
+        if(buildingId > 0){
+            return building;
+        }
+        return null;
     }
 }
