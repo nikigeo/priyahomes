@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module("priyaHomesApp",["ngRoute"]);
+    var app = angular.module("priyaHomesApp",["ngRoute","ngAnimate", "ui.bootstrap"]);
 
     app.config(function($routeProvider,$httpProvider){
         $routeProvider
@@ -10,6 +10,10 @@
             .when("/home",{
                 templateUrl:"/static/home.html",
                 controller : "CustomerAddController"
+                })
+            .when("/addVerificationType",{
+                templateUrl:"/static/verificationType/addVerificationType.html",
+                controller : "VerificationTypeController"
                 })
             .when("/search",{
                 templateUrl:"/static/customer/searchCustomer.html",

@@ -26,10 +26,17 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.ph.admin.verification.model.VerificationType</value>
+				<value>com.ph.customer.model.Customer</value>
+				<value>com.ph.customer.model.CustomerAddress</value>
+			</list>
+		</property>
 		<property name="mappingResources">
 			<list>
 				<value>orm/Ph.users.hbm.xml</value>
-				<value>orm/Ph.customer.hbm.xml</value>
+				<!--<value>orm/Ph.customer.hbm.xml</value> -->
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -39,22 +46,17 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+
 	</bean>
 
 	<bean id="userDao" class="com.ph.users.dao.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="customerDao" class="com.ph.customer.dao.CustomerDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-
 	<bean id="myUserDetailsService" class="com.ph.users.service.MyUserDetailsService">
 		<property name="userDao" ref="userDao" />
 	</bean>
 
-	<bean id="customerService" class="com.ph.customer.service.CustomerServiceImpl">
-		<property name="customerDao" ref="customerDao" />
-	</bean>
+
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">

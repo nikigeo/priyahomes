@@ -1,34 +1,60 @@
 package com.ph.customer.model;
 
+import javax.persistence.*;
+
 /**
  * Created by mozanta on 10/11/15.
  */
+@Entity
+@Table(name="ph_customer_address")
 public class CustomerAddress implements java.io.Serializable{
-    private int addressId;
-    private String houseStreetName;
-    private String houseLocality;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "address1")
+    private String address1;
+
+    @Column(name = "address2")
+    private String address2;
+
+    @Column(name = "state")
     private String state;
+
+    @Column(name = "country")
     private String country;
-    private String phoneNumber;
 
-    public int getAddressId() {   return addressId;  }
+    @Column(name = "pincode")
+    private String pinCode;
 
-    public void setAddressId(int addressId) {  this.addressId = addressId; }
+    @ManyToOne
+    @JoinColumn(name = "customer")
+    private Customer customer;
 
-    public String getHouseStreetName() {
-        return houseStreetName;
+    public int getId() {
+        return id;
     }
 
-    public void setHouseStreetName(String houseStreetName) {
-        this.houseStreetName = houseStreetName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getHouseLocality() {
-        return houseLocality;
+    public String getAddress1() {
+        return address1;
     }
 
-    public void setHouseLocality(String houseLocality) {
-        this.houseLocality = houseLocality;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
     }
 
     public String getState() {
@@ -47,13 +73,19 @@ public class CustomerAddress implements java.io.Serializable{
         this.country = country;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPinCode() {
+        return pinCode;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPinCode(String pinCode) {
+        this.pinCode = pinCode;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

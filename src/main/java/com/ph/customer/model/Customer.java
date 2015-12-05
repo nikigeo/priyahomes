@@ -4,23 +4,64 @@
 
 package com.ph.customer.model;
 
+import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+@Entity
+@Table(name="ph_customers")
 public class Customer implements java.io.Serializable{
 
-    private int customerId;
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "firstname")
     private String firstName;
-    private String lastName;
+
+    @Column(name = "midname")
     private String midName;
+
+    @Column(name = "lastname")
+    private String lastName;
+
+    @Column(name = "dob")
+    private Date date = new Date();
+
+    @Column(name = "gender")
+    private char gender;
+
+    @Column(name = "contactnumber")
     private String contactNumber;
-    private int age;
-    private boolean nonIndian;
-    private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>(0);
 
-    public int getCustomerId() { return customerId;  }
+    @Column(name = "emergencycontact")
+    private String emergencyContact;
 
-    public void setCustomerId(int customerId) { this.customerId = customerId; }
+    @Column(name = "indian")
+    private boolean indian;
+
+    @Column(name = "verificationidtype")
+    private int verificationType;
+
+    @Column(name = "verificationrefnumber")
+    private String verificationNumber;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>();
+
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -28,14 +69,6 @@ public class Customer implements java.io.Serializable{
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getMidName() {
@@ -46,6 +79,30 @@ public class Customer implements java.io.Serializable{
         this.midName = midName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
     public String getContactNumber() {
         return contactNumber;
     }
@@ -54,25 +111,43 @@ public class Customer implements java.io.Serializable{
         this.contactNumber = contactNumber;
     }
 
-    public int getAge() {
-        return age;
+    public String getEmergencyContact() {
+        return emergencyContact;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
     }
 
-    public boolean isNonIndian() {
-        return nonIndian;
+    public boolean isIndian() {
+        return indian;
     }
 
-    public void setNonIndian(boolean nonIndian) {
-        this.nonIndian = nonIndian;
+    public void setIndian(boolean indian) {
+        this.indian = indian;
     }
 
-    public Set<CustomerAddress> getCustomerAddresses() {  return customerAddresses;  }
+    public int getVerificationType() {
+        return verificationType;
+    }
 
-    public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {  this.customerAddresses = customerAddresses;   }
+    public void setVerificationType(int verificationType) {
+        this.verificationType = verificationType;
+    }
 
+    public String getVerificationNumber() {
+        return verificationNumber;
+    }
 
+    public void setVerificationNumber(String verificationNumber) {
+        this.verificationNumber = verificationNumber;
+    }
+
+    public Set<CustomerAddress> getCustomerAddresses() {
+        return customerAddresses;
+    }
+
+    public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {
+        this.customerAddresses = customerAddresses;
+    }
 }
