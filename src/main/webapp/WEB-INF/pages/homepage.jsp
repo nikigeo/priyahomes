@@ -15,6 +15,8 @@
     <script src="/resources/core/js/customerController.js"></script>
     <script src="/resources/core/js/VerificationTypeService.js"></script>
     <script src="/resources/core/js/VerificationTypeController.js"></script>
+    <script src="/resources/core/js/building/buildingService.js"></script>
+    <script src="/resources/core/js/building/buildingController.js"></script>
 
     <link href="/resources/core/style/style.css" rel="stylesheet" />
 
@@ -29,6 +31,7 @@
 				<a href="#/addCustomer">Create Customer</a><hr>
 				<a href="#/search">Search Customer</a><hr>
 				<a href="#/addVerificationType">Create Verification Type</a><hr>
+				<a href="#/addBuilding">Add new Building</a><hr>
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->

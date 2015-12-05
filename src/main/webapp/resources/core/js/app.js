@@ -5,11 +5,11 @@
         $routeProvider
             .when("/addCustomer",{
                 templateUrl:"/static/customer/addCustomer.html",
-                controller : "CustomerAddController"
+                controller : "CustomerController"
                 })
             .when("/home",{
                 templateUrl:"/static/home.html",
-                controller : "CustomerAddController"
+                controller : "CustomerController"
                 })
             .when("/addVerificationType",{
                 templateUrl:"/static/verificationType/addVerificationType.html",
@@ -17,7 +17,11 @@
                 })
             .when("/search",{
                 templateUrl:"/static/customer/searchCustomer.html",
-                controller : "CustomerAddController"
+                controller : "CustomerController"
+                })
+            .when("/addBuilding",{
+                templateUrl:"/static/building/addBuilding.html",
+                controller : "BuildingController"
                 })
             .otherwise({redirectTo:"/home"});
 
