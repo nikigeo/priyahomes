@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name="ph_customer")
+@Table(name="ph_customers")
 public class Customer implements java.io.Serializable{
 
 
