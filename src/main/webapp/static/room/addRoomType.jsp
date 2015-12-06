@@ -28,16 +28,16 @@
             </p>
             <p>
                 <label class="field" for="Kitchen">Kitchen</label>
-                <input type="checkbox" ng-model="roomType.isKitchenAvailable" value="true">
+                <input type="checkbox" ng-model="roomType.kitchen" />
 
                 <label class="field" for="AC">AC</label>
-                <input type="checkbox" ng-model="roomType.isACAvailable" value="true">
+                <input type="checkbox" ng-model="roomType.isACAvailable" />
 
                 <label class="field" for="TV">TV</label>
-                <input type="checkbox" ng-model="roomType.isTVAvailable" value="true">
+                <input type="checkbox" ng-model="roomType.isTVAvailable" />
 
                 <label class="field" for="Wifi">Wifi</label>
-                <input type="checkbox" ng-model="roomType.isWifiAvailable" value="true">
+                <input type="checkbox" ng-model="roomType.isWifiAvailable" />
 
             </p>
             <p>
