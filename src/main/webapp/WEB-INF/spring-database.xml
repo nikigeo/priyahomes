@@ -32,6 +32,7 @@
 				<value>com.ph.customer.model.Customer</value>
 				<value>com.ph.customer.model.CustomerAddress</value>
 				<value>com.ph.admin.building.model.Building</value>
+				<value>com.ph.admin.room.model.RoomType</value>
 			</list>
 		</property>
 		<property name="mappingResources">

@@ -13,10 +13,12 @@
     <script src="/resources/core/js/app.js"></script>
     <script src="/resources/core/js/customerService.js"></script>
     <script src="/resources/core/js/customerController.js"></script>
-    <script src="/resources/core/js/VerificationTypeService.js"></script>
-    <script src="/resources/core/js/VerificationTypeController.js"></script>
+    <script src="/resources/core/js/verification/VerificationTypeService.js"></script>
+    <script src="/resources/core/js/verification/VerificationTypeController.js"></script>
     <script src="/resources/core/js/building/buildingService.js"></script>
     <script src="/resources/core/js/building/buildingController.js"></script>
+    <script src="/resources/core/js/room/roomService.js"></script>
+    <script src="/resources/core/js/room/roomController.js"></script>
 
     <link href="/resources/core/style/style.css" rel="stylesheet" />
 
@@ -32,6 +34,7 @@
 				<a href="#/search">Search Customer</a><hr>
 				<a href="#/addVerificationType">Create Verification Type</a><hr>
 				<a href="#/addBuilding">Add new Building</a><hr>
+				<a href="#/addRoomType">Add new Room Type</a><hr>
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->

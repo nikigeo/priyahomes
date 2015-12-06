@@ -23,6 +23,10 @@
                 templateUrl:"/static/building/addBuilding.html",
                 controller : "BuildingController"
                 })
+            .when("/addRoomType",{
+                templateUrl:"/static/room/addRoomType.jsp",
+                controller : "RoomController"
+                })
             .otherwise({redirectTo:"/home"});
 
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
