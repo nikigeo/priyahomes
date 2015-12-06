@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("v1/ph/buildings")
 public class BuildingController {
@@ -26,5 +28,12 @@ public class BuildingController {
             return building;
         }
         return null;
+    }
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Building> getAllVerificationTypes()
+    {
+        return buildingApiFacade.getAllBuldings();
     }
 }

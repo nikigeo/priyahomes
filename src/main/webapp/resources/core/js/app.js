@@ -23,6 +23,10 @@
                 templateUrl:"/static/building/addBuilding.html",
                 controller : "BuildingController"
                 })
+            .when("/searchBookingAvailability",{
+                 templateUrl:"/static/booking/addBooking.html",
+                 controller : "BookingController"
+                 })
             .otherwise({redirectTo:"/home"});
 
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';

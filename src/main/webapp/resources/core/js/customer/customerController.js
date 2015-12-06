@@ -3,7 +3,7 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var CustomerAddController = function($scope,$log,customer){
+	var CustomerController = function($scope,$log,customerService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
@@ -31,16 +31,16 @@
 
 	$scope.saveCustomer = function(){
 		$scope.customerAddresses.push({ 'address1':$scope.address.address1,'address2':$scope.address.address2,'state':$scope.address.state,'country':$scope.address.country,'pinCode':$scope.address.pincode});
-		customer.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
+		customerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
 
 	};
 
 	$scope.searchCustomerByContactNumber = function(){
-		customer.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
+		customerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
     };
 
     var getVerificationTypes = function(){
-		customer.getAllVerificationTypes().then(onSuccessVerificationTypes,onError);
+		customerService.getAllVerificationTypes().then(onSuccessVerificationTypes,onError);
 	};
 	getVerificationTypes();
 
@@ -51,8 +51,38 @@
 	$scope.address="";
 	$scope.customerAddresses=[];
 
+	//changes for datepicker Start
+
+	$scope.today = function() {
+		$scope.dt = new Date();
+	  };
+	  $scope.today();
+
+	  $scope.clear = function () {
+		$scope.dt = null;
+	  };
+	  $scope.minDate = new Date(1950, 5, 22);
+	  $scope.maxDate = new Date(2100, 5, 22);
+
+	  $scope.open = function($event) {
+		$scope.status.opened = true;
+	  };
+
+	  $scope.setDate = function(year, month, day) {
+		$scope.dt = new Date(year, month, day);
+	  };
+
+	  $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+	  $scope.format = $scope.formats[0];
+
+	  $scope.status = {
+		opened: false
+	  };
+
+	  //changes for datepicker End
+
 	};
 
-	app.controller("CustomerAddController",CustomerAddController);
+	app.controller("CustomerController",CustomerController);
 
 }());

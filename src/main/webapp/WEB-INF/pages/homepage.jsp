@@ -3,23 +3,22 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html ng-app="priyaHomesApp">
  <head>
-
-    <script src="/resources/core/js/jquery-2.1.4.min.js"></script>
-    <script src="/resources/core/js/bootstrap.min.js"></script>
     <script src="/resources/core/js/angular.min.js"></script>
-    <script src="/resources/core/js/angular-route.js"></script>
+    <script src="/resources/core/js/angular-route.min.js"></script>
     <script src="/resources/core/js/angular-animate.min.js"></script>
+    <script src="/resources/core/js/angular-touch.min.js"></script>
+    <script src="/resources/core/js/angular-sanitize.min.js"></script>
     <script src="/resources/core/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script src="/resources/core/js/app.js"></script>
-    <script src="/resources/core/js/customerService.js"></script>
-    <script src="/resources/core/js/customerController.js"></script>
-    <script src="/resources/core/js/VerificationTypeService.js"></script>
-    <script src="/resources/core/js/VerificationTypeController.js"></script>
+    <script src="/resources/core/js/customer/customerService.js"></script>
+    <script src="/resources/core/js/customer/customerController.js"></script>
+    <script src="/resources/core/js/verificationType/verificationTypeService.js"></script>
+    <script src="/resources/core/js/verificationType/verificationTypeController.js"></script>
     <script src="/resources/core/js/building/buildingService.js"></script>
     <script src="/resources/core/js/building/buildingController.js"></script>
-
+    <script src="/resources/core/js/booking/bookingService.js"></script>
+	<script src="/resources/core/js/booking/bookingController.js"></script>
     <link href="/resources/core/style/style.css" rel="stylesheet" />
-
     <link href="/resources/core/style/bootstrap.min.css" rel="stylesheet" />
 
   </head>
@@ -32,6 +31,9 @@
 				<a href="#/search">Search Customer</a><hr>
 				<a href="#/addVerificationType">Create Verification Type</a><hr>
 				<a href="#/addBuilding">Add new Building</a><hr>
+				<a href="#/searchBookingAvailability">Add Booking</a><hr>
+
+
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->

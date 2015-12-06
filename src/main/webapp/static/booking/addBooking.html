@@ -1,0 +1,33 @@
+<div id="addBooking">
+    <form name="addBooking" >
+        <fieldset>
+            <legend> Create Booking</legend>
+            <p>
+                <label class="field" for="From Date"><span>*</span>From Date</label>
+                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.fromDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+
+            </p>
+
+            <p>
+                <label class="field" for="To Date"><span>*</span>To Date</label>
+                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.toDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </p>
+            <p>
+                <label class="field" for="Building"><span>*</span>Building</label>
+                <input type="text" ng-model="booking.building" />
+            </p>
+            <p>
+                <label class="field" for="Room Type"><span>*</span>Room Type</label>
+                <input type="text" ng-model="booking.roomType" />
+            </p>
+
+            <p>
+                <input type="submit" value="Search Availability"  ng-click="searchAvailability()"/>
+            </p>
+        </fieldset>
+    </form>
+</div>

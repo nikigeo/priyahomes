@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BuildingDaoImpl implements BuildingDao {
 
@@ -27,5 +29,9 @@ public class BuildingDaoImpl implements BuildingDao {
         buildingId = (Integer)session.save(building);
         session.getTransaction().commit();
         return buildingId;
+    }
+
+    public List<Building> getAllBuldings() {
+        return sessionFactory.getCurrentSession().createQuery("from Building").list();
     }
 }

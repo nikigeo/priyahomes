@@ -1,9 +1,9 @@
 (function(){
 
-    var customer = function($http){
+    var customerService = function($http){
 
         var addUser = function(customer,addressList){
-            return $http.post('/v1/ph/customers', {firstName: customer.firstName, lastName:customer.lastName, midName:customer.middleName ,gender:customer.gender ,contactNumber: customer.contactNumber,emergencyContact:customer.emergencycontact,indian:customer.nationality,verificationType:customer.verificationType,verificationNumber:customer.verificationNumber,customerAddresses:addressList})
+            return $http.post('/v1/ph/customers', {firstName: customer.firstName, lastName:customer.lastName, midName:customer.middleName ,gender:customer.gender ,contactNumber: customer.contactNumber,emergencyContact:customer.emergencycontact,indian:customer.nationality,verificationType:customer.verificationType,verificationNumber:customer.verificationNumber,dateOfBirth:customer.dob,customerAddresses:addressList})
             .then(function(response){
                 return response.data;
                 });
@@ -33,6 +33,6 @@
 
     };
     var app = angular.module("priyaHomesApp");
-    app.factory("customer",customer);
+    app.factory("customerService",customerService);
 
 }());

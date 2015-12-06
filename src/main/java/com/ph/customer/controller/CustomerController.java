@@ -29,7 +29,7 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public String createEmployee(@RequestBody Customer  customer)
+    public String createCustomer(@RequestBody Customer  customer)
     {
         return customerApiFacade.insertCustomer(customer);
     }

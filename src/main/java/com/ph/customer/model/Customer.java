@@ -30,7 +30,7 @@ public class Customer implements java.io.Serializable{
     private String lastName;
 
     @Column(name = "dob")
-    private Date date = new Date();
+    private Date dateOfBirth ;
 
     @Column(name = "gender")
     private char gender;
@@ -87,14 +87,6 @@ public class Customer implements java.io.Serializable{
         this.lastName = lastName;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
     public char getGender() {
         return gender;
     }
@@ -149,5 +141,13 @@ public class Customer implements java.io.Serializable{
 
     public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {
         this.customerAddresses = customerAddresses;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }
