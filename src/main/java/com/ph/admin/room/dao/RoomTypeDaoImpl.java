@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Pradeesh on 12/6/2015.
  */
@@ -30,5 +32,10 @@ public class RoomTypeDaoImpl implements RoomTypeDao{
         roomTypeId = (Integer)session.save(roomType);
         session.getTransaction().commit();
         return roomTypeId;
+    }
+
+    public List<RoomType> getAllRoomTypes() {
+        Session session = getSessionFactory().openSession();
+        return  session.createQuery("from RoomType").list();
     }
 }

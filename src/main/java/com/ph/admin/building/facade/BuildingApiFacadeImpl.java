@@ -5,6 +5,7 @@ import com.ph.admin.building.service.BuildingService;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.List;
 
 @Service
 public class BuildingApiFacadeImpl implements BuildingApiFacade{
@@ -18,5 +19,9 @@ public class BuildingApiFacadeImpl implements BuildingApiFacade{
 
     public int insertBuilding(Building building) {
         return buildingService.insertBuilding(building);
+    }
+
+    public List<Building> getAllBuildings() {
+        return buildingService.getAllBuildings();
     }
 }

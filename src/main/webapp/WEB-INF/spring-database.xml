@@ -33,6 +33,7 @@
 				<value>com.ph.customer.model.CustomerAddress</value>
 				<value>com.ph.admin.building.model.Building</value>
 				<value>com.ph.admin.room.model.RoomType</value>
+				<value>com.ph.admin.room.model.Room</value>
 			</list>
 		</property>
 		<property name="mappingResources">

@@ -1,8 +1,5 @@
 package com.ph.admin.room.model;
 
-import org.postgresql.core.types.PGNumber;
-import org.postgresql.util.PGmoney;
-
 import javax.persistence.*;
 
 /**

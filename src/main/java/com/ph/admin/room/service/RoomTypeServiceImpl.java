@@ -5,6 +5,8 @@ import com.ph.admin.room.model.RoomType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Pradeesh on 12/6/2015.
  */
@@ -16,5 +18,9 @@ public class RoomTypeServiceImpl implements RoomTypeService {
 
     public int insertRoomType(final RoomType roomType) {
         return roomTypeDao.insertRoomType(roomType);
+    }
+
+    public List<RoomType> getAllRoomTypes() {
+        return roomTypeDao.getAllRoomTypes();
     }
 }
