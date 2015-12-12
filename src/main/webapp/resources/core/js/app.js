@@ -25,6 +25,10 @@
                 })
             .when("/addRoomType",{
                 templateUrl:"/static/room/addRoomType.jsp",
+                controller : "RoomTypeController"
+                })
+            .when("/addRoom",{
+                templateUrl:"/static/room/addRoom.jsp",
                 controller : "RoomController"
                 })
             .otherwise({redirectTo:"/home"});
@@ -32,6 +36,4 @@
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
     });
-
-
 }());

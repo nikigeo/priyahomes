@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * Created by Pradeesh on 12/5/2015.
  */
@@ -24,6 +26,12 @@ public class RoomTypeController {
     @ResponseBody
     public int insertRoomType(@RequestBody RoomType roomType) {
         return roomTypeApiFacade.insertRoomType(roomType);
+    }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/getAll")
+    @ResponseBody
+    public List<RoomType> getAllRoomTypes(){
+        return roomTypeApiFacade.getAllRoomTypes();
     }
 
 }

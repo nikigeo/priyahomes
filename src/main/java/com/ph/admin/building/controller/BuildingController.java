@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("v1/ph/buildings")
@@ -26,5 +27,11 @@ public class BuildingController {
             return building;
         }
         return null;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAll")
+    @ResponseBody
+    public List<Building> getAllBuildings(){
+       return buildingApiFacade.getAllBuildings();
     }
 }

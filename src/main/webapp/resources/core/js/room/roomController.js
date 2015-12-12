@@ -6,20 +6,43 @@
 
 	var onSuccess = function(data){
 		$scope.result = data;
-		$scope.roomType="";
+		$scope.room="";
 		$log.info("Result after webservice room type creation service call "+data);
+	}
+
+	var onSuccessRoomTypes = function(data){
+		$scope.roomTypes = data;
+		$log.info("Result after webservice get all room types "+data)
+	}
+
+	var onSuccessBuildings = function(data){
+		$scope.buildings = data;
+		$log.info("Result after webservice get all room types "+data)
 	}
 
 	var onError = function(reason){
 		$scope.result = "Error retrieving data";
 
 	}
-	$scope.saveRoomType = function(){
-		RoomService.addRoomType($scope.roomType).then(onSuccess,onError);
+	$scope.saveRoom = function(){
+		RoomService.addRoom($scope.room).then(onSuccess,onError);
 	};
 
-	$scope.roomType="";
+	var getAllRoomTypes = function(){
+		RoomService.getAllRoomTypes().then(onSuccessRoomTypes,onError);
+	};
+
+	var getAllBuildings = function(){
+		RoomService.getAllBuildings().then(onSuccessBuildings,onError);
+	};
+
+	getAllRoomTypes();
+	getAllBuildings();
+
+	$scope.room="";
 	$scope.result="";
+	$scope.roomTypes="";
+	$scope.buildings="";
 	};
 
 	app.controller("RoomController",RoomController);
