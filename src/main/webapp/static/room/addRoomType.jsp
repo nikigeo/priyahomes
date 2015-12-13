@@ -1,4 +1,4 @@
-<%@ include file="../common/successpage.jsp" %>
+<%@ include file="../common/success.jsp" %>
 <div id="addRoomType" ng-hide="result">
     <form name="addRoomType" >
         <p class="required">* Required</p>
