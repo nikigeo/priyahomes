@@ -20,13 +20,10 @@ public class BuildingController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public Building insertBuilding(@RequestBody Building building)
+    public int insertBuilding(@RequestBody Building building)
     {
         int buildingId = buildingApiFacade.insertBuilding(building);
-        if(buildingId > 0){
-            return building;
-        }
-        return null;
+        return buildingId;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")

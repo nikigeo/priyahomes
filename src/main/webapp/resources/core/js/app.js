@@ -20,7 +20,7 @@
                 controller : "CustomerController"
                 })
             .when("/addBuilding",{
-                templateUrl:"/static/building/addBuilding.html",
+                templateUrl:"/static/building/addBuilding.jsp",
                 controller : "BuildingController"
                 })
             .when("/addRoomType",{

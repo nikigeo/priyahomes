@@ -1,4 +1,5 @@
-<div id="addRoom">
+<%@ include file="../common/successpage.jsp" %>
+<div id="addRoom" ng-hide="result">
     <form name="addRoom" >
         <p class="required">* Required</p>
         <fieldset>

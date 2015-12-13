@@ -11,7 +11,7 @@
 	}
 
 	var onError = function(reason){
-		$scope.result = "Error retrieving data";
+		$scope.error = "Error retrieving data"+reason;
 
 	}
 	$scope.saveRoomType = function(){
@@ -20,6 +20,7 @@
 
 	$scope.roomType="";
 	$scope.result="";
+	$scope.error="";
 	};
 
 	app.controller("RoomTypeController",RoomTypeController);
