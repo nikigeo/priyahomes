@@ -17,18 +17,20 @@
             });
 
         };
-    var getAllVerificationTypes = function(){
-        return $http.get('/v1/ph/admin/VerificationType/getAll')
-        .then(function(response){
-            return response.data;
 
-        });
-        };
+    var searchCustomerById = function(customerId){
+            return $http.get('/v1/ph/customers/'+customerId)
+            .then(function(response){
+                return response.data;
+                });
+
+            };
+
 
         return{
             addUser:addUser,
             searchCustomerByContactNumber:searchCustomerByContactNumber,
-            getAllVerificationTypes:getAllVerificationTypes
+            searchCustomerById:searchCustomerById
         };
 
     };

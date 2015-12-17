@@ -25,10 +25,7 @@ public class Booking implements java.io.Serializable {
     private int customerId;
 
     @Column(name = "status")
-    private int status;
-
-    @Column(name = "payment")
-    private int paymentType;
+    private String status;
 
     public int getId() {
         return id;
@@ -70,19 +67,11 @@ public class Booking implements java.io.Serializable {
         this.customerId = customerId;
     }
 
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
-    }
-
-    public int getPaymentType() {
-        return paymentType;
-    }
-
-    public void setPaymentType(int paymentType) {
-        this.paymentType = paymentType;
     }
 }

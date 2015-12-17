@@ -12,9 +12,9 @@
 CREATE TABLE ph_internal_users (
 	username varchar(50) NOT NULL,
 	password varchar(100) NOT NULL,
-	enable bool,
+	enabled bool,
 	CONSTRAINT ph_internal_user_pk PRIMARY KEY (username)
 );
 
-INSERT INTO ph_internal_users(username,password,enable) VALUES('admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y',true);
+INSERT INTO ph_internal_users(username,password,enabled) VALUES('admin','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y',true);
 COMMIT;

@@ -11,7 +11,7 @@
             <column name="password" length="100" not-null="true" />
         </property>
         <property name="enabled" type="boolean">
-            <column name="enable" not-null="true" />
+            <column name="enabled" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

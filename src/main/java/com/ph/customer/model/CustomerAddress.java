@@ -29,7 +29,7 @@ public class CustomerAddress implements java.io.Serializable{
     @Column(name = "pincode")
     private String pinCode;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "customer")
     private Customer customer;
 

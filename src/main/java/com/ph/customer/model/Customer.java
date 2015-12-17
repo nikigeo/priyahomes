@@ -4,6 +4,10 @@
 
 package com.ph.customer.model;
 
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -45,12 +49,12 @@ public class Customer implements java.io.Serializable{
     private boolean indian;
 
     @Column(name = "verificationidtype")
-    private int verificationType;
+    private Integer verificationType;
 
     @Column(name = "verificationrefnumber")
     private String verificationNumber;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>();
 
 

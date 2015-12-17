@@ -120,3 +120,7 @@ CREATE TABLE ph_bookings (
 
 CREATE INDEX ph_bookings_pk_idx ON ph_bookings (id);
 
+ALTER TABLE ph_bookings DROP COLUMN payment;
+
+ALTER TABLE ph_payments ADD booking int NULL;
+

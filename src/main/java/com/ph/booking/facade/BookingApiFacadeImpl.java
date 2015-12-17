@@ -5,6 +5,9 @@ import com.ph.booking.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by mozanta on 6/12/15.
  */
@@ -16,5 +19,9 @@ public class BookingApiFacadeImpl implements BookingApiFacade {
 
     public Integer insertBooking(Booking booking) {
         return bookingService.insertBooking(booking);
+    }
+
+    public List<Booking> findByDates(String fromDate, String toDate) {
+        return bookingService.findByDates(fromDate,toDate);
     }
 }

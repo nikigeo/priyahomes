@@ -269,4 +269,17 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="11" author="Anoop" failOnError="true">
+        <dropColumn columnName="payment"  tableName="ph_bookings"/>
+        <addColumn tableName="ph_payments">
+            <column name="booking" type="int"/>
+        </addColumn>
+        <addForeignKeyConstraint baseTableName="ph_payments"
+                                 baseColumnNames="booking"
+                                 constraintName="ph_payments_ph_booking_fk"
+                                 referencedTableName="ph_bookings"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
 </databaseChangeLog>

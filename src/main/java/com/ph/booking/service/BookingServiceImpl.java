@@ -5,6 +5,9 @@ import com.ph.booking.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Created by mozanta on 6/12/15.
  */
@@ -16,5 +19,9 @@ public class BookingServiceImpl implements BookingService {
 
     public Integer insertBooking(Booking booking) {
         return bookingDao.insertBooking(booking);
+    }
+
+    public List<Booking> findByDates(String fromDate, String toDate) {
+        return bookingDao.findByDates(fromDate,toDate);
     }
 }

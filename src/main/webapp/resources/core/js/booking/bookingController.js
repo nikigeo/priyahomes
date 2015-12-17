@@ -1,61 +1,118 @@
 
 (function(){
 
- var app = angular.module("priyaHomesApp");
+	var app = angular.module("priyaHomesApp");
 
-	var BookingController = function($scope,$log,bookingService){
+		var BookingController = function($scope,$log,bookingService,customerService,VerificationTypeService){
 
-	var onSuccess = function(data){
-		$scope.result = data;
-		$log.info("Result after generic webservice call "+data);
-	}
+		var onSuccess = function(data){
+			$scope.result = data;
+			$log.info("Result after generic webservice call "+data);
+		}
 
-	var onError = function(reason){
-		$scope.result = "Error retrieving data";
+		var onError = function(reason){
+			$scope.result = "Error retrieving data after webservice call";
+		}
 
-	}
+		var onSuccessVerificationTypes = function(data){
+			$scope.verificationTypes = data;
+			$log.info("Result after webservice getAllVerificationTypes call "+data);
+		}
 
-	$scope.addBooking = function(){
-		bookingService.addBooking($scope.booking).then(onSuccess,onError);
-	};
+		var getVerificationTypes = function(){
+			VerificationTypeService.getAllVerificationTypes().then(onSuccessVerificationTypes,onError);
+		};
+		getVerificationTypes();
 
-	$scope.searchAvailability = function(){
+		$scope.saveBooking = function(){
+			$scope.booking.customerId = $scope.selectedCustomer.id;
+			bookingService.addBooking($scope.booking).then(onSuccess,onError);
+		};
 
-	$log.info("Result after generic webservice call "+$scope.booking);
+		var onSuccessSearchCustomerByContactNumber = function(data){
+			$scope.customerResult = data;
+			$log.info("Result after SearchCustomerByContactNumber webservice call "+data);
+		}
 
-	};
+		$scope.searchCustomerByContactNumber = function(){
+			customerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccessSearchCustomerByContactNumber,onError);
+		};
 
-	//changes for datepicker Start
 
-	$scope.today = function() {
+
+		$scope.onSelect = function ($item, $model, $label) {
+			$scope.selectedCustomer = $item;
+		};
+
+		var onSuccessSearchCustomerById = function(data){
+			$scope.selectedCustomer = data;
+			$log.info("Result after webservice getAllVerificationTypes call "+data);
+		}
+
+		var onSuccessCustomerCreation = function(data){
+			$scope.customerCreatedId = data;
+			$scope.customer="";
+			$scope.isCustomerCreationCollapsed = false;
+			$log.info("Result after webservice CustomerCreation call "+data);
+			customerService.searchCustomerById($scope.customerCreatedId).then(onSuccessSearchCustomerById,onError);
+		}
+
+		$scope.saveCustomer = function(){
+			customerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
+		};
+
+		var onBookingFetchSuccess = function(data){
+			$scope.bookings = data;
+			$scope.customerCreatedId = "";
+			$log.info("Result after Booking fetch service call "+data);
+		}
+		$scope.findBookingByDates = function() {
+			bookingService.findBookingByDates($scope.booking).then(onBookingFetchSuccess,onError);
+		};
+
+		//changes for datepicker Start
+
+		$scope.today = function() {
 		$scope.dt = new Date();
-	  };
-	  $scope.today();
+		};
+		$scope.today();
 
-	  $scope.clear = function () {
+		$scope.clear = function () {
 		$scope.dt = null;
-	  };
-	  $scope.minDate = new Date(1950, 5, 22);
-	  $scope.maxDate = new Date(2100, 5, 22);
+		};
+		$scope.minDate = new Date(1950, 5, 22);
+		$scope.maxDate = new Date(2100, 5, 22);
 
-	  $scope.open = function($event) {
-		$scope.status.opened = true;
-	  };
 
-	  $scope.setDate = function(year, month, day) {
-		$scope.dt = new Date(year, month, day);
-	  };
+		$scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+		$scope.format = $scope.formats[0];
 
-	  $scope.formats = ['dd-MM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-	  $scope.format = $scope.formats[0];
 
-	  $scope.status = {
-		opened: false
-	  };
 
-	  //changes for datepicker End
+		$scope.openFrmDate = function($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+			$scope.openFromDatePopup = true;
+		};
 
-	$scope.booking="";
+		$scope.openToDate = function($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+			$scope.openToDatePopup = true;
+		};
+
+		$scope.dobDate = function($event) {
+			$event.preventDefault();
+			$event.stopPropagation();
+			$scope.dobDatePopup = true;
+		};
+
+		//changes for datepicker End
+
+
+		$scope.booking="";
+		$scope.isCustomerCreationCollapsed = true;
+		$scope.isCustomerSelectionCollapsed = true;
 
 
 	};
