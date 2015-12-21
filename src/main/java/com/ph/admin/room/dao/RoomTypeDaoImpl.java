@@ -1,6 +1,6 @@
-package com.ph.admin.building.dao;
+package com.ph.admin.room.dao;
 
-import com.ph.admin.building.model.Building;
+import com.ph.admin.room.model.RoomType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Created by Pradeesh on 12/6/2015.
+ */
 @Service
-public class BuildingDaoImpl implements BuildingDao {
+public class RoomTypeDaoImpl implements RoomTypeDao{
 
     @Autowired(required = true)
     private SessionFactory sessionFactory;
@@ -22,16 +25,17 @@ public class BuildingDaoImpl implements BuildingDao {
         this.sessionFactory = sessionFactory;
     }
 
-    public int insertBuilding(final Building building) {
-        Integer buildingId = null;
+    public int insertRoomType(final RoomType roomType) {
+        Integer roomTypeId = null;
         Session session = getSessionFactory().openSession();
         session.beginTransaction();
-        buildingId = (Integer)session.save(building);
+        roomTypeId = (Integer)session.save(roomType);
         session.getTransaction().commit();
-        return buildingId;
+        return roomTypeId;
     }
 
-    public List<Building> getAllBuildings() {
-        return sessionFactory.openSession().createQuery("from Building").list();
+    public List<RoomType> getAllRoomTypes() {
+        Session session = getSessionFactory().openSession();
+        return  session.createQuery("from RoomType").list();
     }
 }

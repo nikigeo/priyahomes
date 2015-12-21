@@ -20,18 +20,24 @@
                 controller : "CustomerController"
                 })
             .when("/addBuilding",{
-                templateUrl:"/static/building/addBuilding.html",
+                templateUrl:"/static/building/addBuilding.jsp",
                 controller : "BuildingController"
                 })
             .when("/searchBookingAvailability",{
                  templateUrl:"/static/booking/addBooking.html",
                  controller : "BookingController"
                  })
+            .when("/addRoomType",{
+                templateUrl:"/static/room/addRoomType.jsp",
+                controller : "RoomTypeController"
+                })
+            .when("/addRoom",{
+                templateUrl:"/static/room/addRoom.jsp",
+                controller : "RoomController"
+                })
             .otherwise({redirectTo:"/home"});
 
             $httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
 
     });
-
-
 }());

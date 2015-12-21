@@ -27,7 +27,7 @@ public class BuildingServiceImpl implements BuildingService {
         return buildingDao.insertBuilding(building);
     }
 
-    public List<Building> getAllBuldings() {
-        return buildingDao.getAllBuldings();
+    public List<Building> getAllBuildings() {
+        return buildingDao.getAllBuildings();
     }
 }

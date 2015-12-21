@@ -1,4 +1,6 @@
-<div id="addBuilding">
+<%@ include file="../common/success.jsp" %>
+<%@ include file="../common/error.jsp" %>
+<div id="addBuilding" ng-hide="result">
     <form name="addBuilding" >
         <fieldset>
             <legend>Add Building Details</legend>

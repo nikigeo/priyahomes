@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 import java.util.List;
 
@@ -21,13 +22,16 @@ public class BuildingController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public Building insertBuilding(@RequestBody Building building)
+    public int insertBuilding(@RequestBody Building building)
     {
         int buildingId = buildingApiFacade.insertBuilding(building);
-        if(buildingId > 0){
-            return building;
-        }
-        return null;
+        return buildingId;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getAll")
+    @ResponseBody
+    public List<Building> getAllBuildings(){
+       return buildingApiFacade.getAllBuildings();
     }
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)

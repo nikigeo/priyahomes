@@ -3,6 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html ng-app="priyaHomesApp">
  <head>
+
+    <script src="/resources/core/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/core/js/bootstrap.min.js"></script>
     <script src="/resources/core/js/angular.min.js"></script>
     <script src="/resources/core/js/angular-route.min.js"></script>
     <script src="/resources/core/js/angular-animate.min.js"></script>
@@ -18,7 +21,13 @@
     <script src="/resources/core/js/building/buildingController.js"></script>
     <script src="/resources/core/js/booking/bookingService.js"></script>
 	<script src="/resources/core/js/booking/bookingController.js"></script>
+    <script src="/resources/core/js/room/roomTypeService.js"></script>
+    <script src="/resources/core/js/room/roomTypeController.js"></script>
+    <script src="/resources/core/js/room/roomService.js"></script>
+    <script src="/resources/core/js/room/roomController.js"></script>
+
     <link href="/resources/core/style/style.css" rel="stylesheet" />
+
     <link href="/resources/core/style/bootstrap.min.css" rel="stylesheet" />
 
   </head>
@@ -34,6 +43,8 @@
 				<a href="#/searchBookingAvailability">Add Booking</a><hr>
 
 
+				<a href="#/addRoomType">Add new Room Type</a><hr>
+				<a href="#/addRoom">Add new Room</a><hr>
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->

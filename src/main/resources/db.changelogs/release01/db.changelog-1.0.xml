@@ -54,16 +54,16 @@
             <column name="description" type="varchar(250)">
                 <constraints nullable="false"/>
             </column>
-            <column name="rate" type="number">
+            <column name="rate" type="decimal(10,2)">
                 <constraints nullable="false"/>
             </column>
-            <column name="numberofbedroom" type="int">
+            <column name="numberofbedrooms" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="numberofaccomadate" type="int">
+            <column name="numberoftenants" type="int">
                 <constraints nullable="false"/>
             </column>
-            <column name="numberoftoilet" type="int">
+            <column name="numberoftoilets" type="int">
                 <constraints nullable="false"/>
             </column>
             <column name="kitchen" type="boolean" defaultValueBoolean="false">
@@ -96,7 +96,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="description" type="varchar(250)"/>
-            <column name="rate" type="number"/>
+            <column name="rate" type="decimal(10,2)"/>
             <column name="isavailable" type="boolean">
                 <constraints nullable="false"/>
             </column>

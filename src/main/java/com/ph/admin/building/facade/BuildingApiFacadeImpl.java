@@ -21,7 +21,7 @@ public class BuildingApiFacadeImpl implements BuildingApiFacade{
         return buildingService.insertBuilding(building);
     }
 
-    public List<Building> getAllBuldings() {
-        return buildingService.getAllBuldings();
+    public List<Building> getAllBuildings() {
+        return buildingService.getAllBuildings();
     }
 }
