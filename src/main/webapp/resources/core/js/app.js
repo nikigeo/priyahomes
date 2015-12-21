@@ -1,35 +1,39 @@
 (function(){
-    var app = angular.module("priyaHomesApp",["ngRoute","ngAnimate", "ui.bootstrap"]);
+        var app = angular.module("priyaHomesApp",["ngRoute","ngAnimate", "ui.bootstrap",'bootstrapLightbox']);
 
-    app.config(function($routeProvider,$httpProvider){
-        $routeProvider
-            .when("/addCustomer",{
-                templateUrl:"/static/customer/addCustomer.html",
-                controller : "CustomerController"
+        app.config(function($routeProvider,$httpProvider){
+            $routeProvider
+                .when("/addCustomer",{
+                    templateUrl:"/static/customer/addCustomer.html",
+                    controller : "CustomerController"
+                    })
+                .when("/home",{
+                    templateUrl:"/static/home.html",
+                    controller : "CustomerController"
+                    })
+                .when("/addVerificationType",{
+                    templateUrl:"/static/verificationType/addVerificationType.html",
+                    controller : "VerificationTypeController"
+                    })
+                .when("/search",{
+                    templateUrl:"/static/customer/searchCustomer.html",
+                    controller : "CustomerController"
+                    })
+                .when("/addBuilding",{
+                    templateUrl:"/static/building/addBuilding.jsp",
+                    controller : "BuildingController"
+                    })
+                .when("/addRoomType",{
+                    templateUrl:"/static/room/addRoomType.jsp",
+                    controller : "RoomTypeController"
+                    })
+                .when("/addRoom",{
+                    templateUrl:"/static/room/addRoom.jsp",
+                    controller : "RoomController"
                 })
-            .when("/home",{
-                templateUrl:"/static/home.html",
-                controller : "CustomerController"
-                })
-            .when("/addVerificationType",{
-                templateUrl:"/static/verificationType/addVerificationType.html",
-                controller : "VerificationTypeController"
-                })
-            .when("/search",{
-                templateUrl:"/static/customer/searchCustomer.html",
-                controller : "CustomerController"
-                })
-            .when("/addBuilding",{
-                templateUrl:"/static/building/addBuilding.jsp",
-                controller : "BuildingController"
-                })
-            .when("/addRoomType",{
-                templateUrl:"/static/room/addRoomType.jsp",
-                controller : "RoomTypeController"
-                })
-            .when("/addRoom",{
-                templateUrl:"/static/room/addRoom.jsp",
-                controller : "RoomController"
+                .when("/lightbox",{
+                    templateUrl:"/static/lightbox/index.html",
+                    controller : "LightBoxDemoController"
                 })
             .otherwise({redirectTo:"/home"});
 

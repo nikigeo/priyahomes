@@ -10,6 +10,7 @@
     <script src="/resources/core/js/angular-route.js"></script>
     <script src="/resources/core/js/angular-animate.min.js"></script>
     <script src="/resources/core/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="/resources/core/js/apis/angular-bootstrap-lightbox.min.js"></script>
     <script src="/resources/core/js/app.js"></script>
     <script src="/resources/core/js/customerService.js"></script>
     <script src="/resources/core/js/customerController.js"></script>
@@ -21,9 +22,10 @@
     <script src="/resources/core/js/room/roomTypeController.js"></script>
     <script src="/resources/core/js/room/roomService.js"></script>
     <script src="/resources/core/js/room/roomController.js"></script>
+    <script src="/resources/core/js/lightbox/lightBoxDemoController.js"></script>
 
     <link href="/resources/core/style/style.css" rel="stylesheet" />
-
+    <link href="/resources/core/style/angular-bootstrap-lightbox.min.css" rel="stylesheet" />
     <link href="/resources/core/style/bootstrap.min.css" rel="stylesheet" />
 
   </head>
@@ -38,6 +40,7 @@
 				<a href="#/addBuilding">Add new Building</a><hr>
 				<a href="#/addRoomType">Add new Room Type</a><hr>
 				<a href="#/addRoom">Add new Room</a><hr>
+				<a href="#/lightbox">LightBox</a><hr>
 
 				<sec:authorize access="hasRole('ROLE_ADMIN')">
                 		<!-- For login user -->
