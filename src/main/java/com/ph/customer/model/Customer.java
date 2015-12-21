@@ -54,7 +54,7 @@ public class Customer implements java.io.Serializable{
     @Column(name = "verificationrefnumber")
     private String verificationNumber;
 
-    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
     private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>();
 
 

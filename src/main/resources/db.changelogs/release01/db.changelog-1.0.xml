@@ -220,12 +220,20 @@
             <column name="paymenttype" type="int">
                 <constraints nullable="false"/>
             </column>
+            <column name="booking" type="int">
+                <constraints nullable="false"/>
+            </column>
             <column name="ph_payments_pk" type="varchar(50)"/>
         </createTable>
         <addForeignKeyConstraint baseTableName="ph_payments"
                                  baseColumnNames="paymenttype"
                                  constraintName="ph_payments_ph_payment_types_fk"
                                  referencedTableName="ph_payment_types"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ph_payments"
+                                 baseColumnNames="booking"
+                                 constraintName="ph_payments_ph_booking_fk"
+                                 referencedTableName="ph_bookings"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet id="10" author="Pradeesh" failOnError="true">
@@ -248,10 +256,7 @@
             <column name="status" type="varchar(2)">
                 <constraints nullable="false"/>
             </column>
-            <column name="payment" type="int">
-                <constraints nullable="true"/>
-            </column>
-        </createTable>
+                    </createTable>
         <addForeignKeyConstraint baseTableName="ph_bookings"
                                  baseColumnNames="room"
                                  constraintName="ph_bookings_ph_rooms_fk"
@@ -262,24 +267,6 @@
                                  constraintName="ph_bookings_ph_customers_fk"
                                  referencedTableName="ph_customers"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="ph_bookings"
-                                 baseColumnNames="payment"
-                                 constraintName="ph_bookings_ph_payments_fk"
-                                 referencedTableName="ph_payments"
-                                 referencedColumnNames="id"/>
-    </changeSet>
-
-    <changeSet id="11" author="Anoop" failOnError="true">
-        <dropColumn columnName="payment"  tableName="ph_bookings"/>
-        <addColumn tableName="ph_payments">
-            <column name="booking" type="int"/>
-        </addColumn>
-        <addForeignKeyConstraint baseTableName="ph_payments"
-                                 baseColumnNames="booking"
-                                 constraintName="ph_payments_ph_booking_fk"
-                                 referencedTableName="ph_bookings"
-                                 referencedColumnNames="id"/>
-
     </changeSet>
 
 </databaseChangeLog>

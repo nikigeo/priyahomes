@@ -1,6 +1,9 @@
 <div id="addVerificationType">
     <form name="addVerificationType" >
         <p class="required">* Required</p>
+        <div ng-show="createdVerificationTypeId" style="color:green" >
+            <b>Succesfully created Verification Type with Id {{createdVerificationTypeId}}</b>
+        </div>
         <fieldset>
             <legend>Verification Type Details</legend>
             <p>

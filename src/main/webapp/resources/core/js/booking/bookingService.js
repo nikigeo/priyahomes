@@ -1,5 +1,5 @@
 (function(){
-    var bookingService = function($http){
+    var BookingService = function($http){
 
         var addBooking = function(booking){
             return $http.post('/v1/ph/booking', {startDate: booking.fromDate, endDate:booking.toDate,roomId:booking.room ,customerId:booking.customerId ,status:booking.status})
@@ -20,6 +20,6 @@
         };
     };
     var app = angular.module("priyaHomesApp");
-    app.factory("bookingService",bookingService);
+    app.factory("BookingService",BookingService);
 
 }());

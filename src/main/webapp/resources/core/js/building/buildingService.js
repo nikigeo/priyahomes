@@ -10,8 +10,16 @@
 
         };
 
+        var getAllBuildings = function(){
+            return $http.get('v1/ph/buildings/getAll')
+            .then(function(response){
+                return response.data;
+            });
+        };
+
         return{
-            addBuilding:addBuilding
+            addBuilding:addBuilding,
+            getAllBuildings : getAllBuildings
         };
 
     };

@@ -1,6 +1,6 @@
 (function(){
 
-    var customerService = function($http){
+    var CustomerService = function($http){
 
         var addUser = function(customer,addressList){
             return $http.post('/v1/ph/customers', {firstName: customer.firstName, lastName:customer.lastName, midName:customer.middleName ,gender:customer.gender ,contactNumber: customer.contactNumber,emergencyContact:customer.emergencycontact,indian:customer.nationality,verificationType:customer.verificationType,verificationNumber:customer.verificationNumber,dateOfBirth:customer.dob,customerAddresses:addressList})
@@ -35,6 +35,6 @@
 
     };
     var app = angular.module("priyaHomesApp");
-    app.factory("customerService",customerService);
+    app.factory("CustomerService",CustomerService);
 
 }());

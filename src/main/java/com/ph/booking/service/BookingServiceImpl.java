@@ -1,5 +1,6 @@
 package com.ph.booking.service;
 
+import com.ph.admin.room.service.RoomService;
 import com.ph.booking.dao.BookingDao;
 import com.ph.booking.model.Booking;
 import org.springframework.beans.factory.annotation.Autowired;

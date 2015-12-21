@@ -11,24 +11,21 @@
 
         };
 
-        var getAllRoomTypes = function(){
-            return $http.get('/v1/ph/roomtype/getAll')
+
+
+        var getAllAvailableRooms = function(booking){
+            return $http.get('/v1/ph/room/getAvailableRooms/'+booking.fromDate+"/"+booking.toDate)
             .then(function(response){
                 return response.data;
             });
         };
 
-        var getAllBuildings = function(){
-            return $http.get('v1/ph/buildings/getAll')
-            .then(function(response){
-                return response.data;
-            });
-        };
+        //Should be moved to booking controller
+
 
         return{
             addRoom : addRoom,
-            getAllRoomTypes : getAllRoomTypes,
-            getAllBuildings : getAllBuildings
+            getAllAvailableRooms:getAllAvailableRooms
         };
 
     };

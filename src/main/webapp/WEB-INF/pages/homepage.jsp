@@ -21,8 +21,8 @@
     <script src="/resources/core/js/building/buildingController.js"></script>
     <script src="/resources/core/js/booking/bookingService.js"></script>
 	<script src="/resources/core/js/booking/bookingController.js"></script>
-    <script src="/resources/core/js/room/roomTypeService.js"></script>
-    <script src="/resources/core/js/room/roomTypeController.js"></script>
+    <script src="/resources/core/js/roomtype/roomTypeService.js"></script>
+    <script src="/resources/core/js/roomtype/roomTypeController.js"></script>
     <script src="/resources/core/js/room/roomService.js"></script>
     <script src="/resources/core/js/room/roomController.js"></script>
 

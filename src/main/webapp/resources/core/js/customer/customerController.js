@@ -3,7 +3,7 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var CustomerController = function($scope,$log,customerService,VerificationTypeService){
+	var CustomerController = function($scope,$log,CustomerService,VerificationTypeService){
 
 		var onSuccess = function(data){
 			$scope.result = data;
@@ -26,13 +26,13 @@
 
 		$scope.saveCustomer = function(){
 			$scope.customerAddresses.push({ 'address1':$scope.address.address1,'address2':$scope.address.address2,'state':$scope.address.state,'country':$scope.address.country,'pinCode':$scope.address.pincode});
-			customerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
+			CustomerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
 		};
 
 
 
 		$scope.searchCustomerByContactNumber = function(){
-			customerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
+			CustomerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccess,onError);
 		};
 
 		var onSuccessgetAllVerificationTypes = function(data){

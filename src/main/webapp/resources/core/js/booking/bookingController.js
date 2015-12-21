@@ -3,30 +3,34 @@
 
 	var app = angular.module("priyaHomesApp");
 
-		var BookingController = function($scope,$log,bookingService,customerService,VerificationTypeService){
-
-		var onSuccess = function(data){
-			$scope.result = data;
-			$log.info("Result after generic webservice call "+data);
-		}
+		var BookingController = function($scope,$log,BookingService,CustomerService,VerificationTypeService,RoomService){
 
 		var onError = function(reason){
 			$scope.result = "Error retrieving data after webservice call";
 		}
 
-		var onSuccessVerificationTypes = function(data){
+		var onSaveBookingSuccess = function(data){
+			$scope.bookingCreatedId=data;
+			$scope.booking="";
+			$scope.customer.contactNumber="";
+			$scope.customerResult ="";
+			$scope.availableRooms ="";
+			$log.info("Result after generic webservice call "+data);
+		}
+
+		var onGetAllVerificationTypesSuccess = function(data){
 			$scope.verificationTypes = data;
 			$log.info("Result after webservice getAllVerificationTypes call "+data);
 		}
 
 		var getVerificationTypes = function(){
-			VerificationTypeService.getAllVerificationTypes().then(onSuccessVerificationTypes,onError);
+			VerificationTypeService.getAllVerificationTypes().then(onGetAllVerificationTypesSuccess,onError);
 		};
 		getVerificationTypes();
 
 		$scope.saveBooking = function(){
 			$scope.booking.customerId = $scope.selectedCustomer.id;
-			bookingService.addBooking($scope.booking).then(onSuccess,onError);
+			BookingService.addBooking($scope.booking).then(onSaveBookingSuccess,onError);
 		};
 
 		var onSuccessSearchCustomerByContactNumber = function(data){
@@ -35,7 +39,7 @@
 		}
 
 		$scope.searchCustomerByContactNumber = function(){
-			customerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccessSearchCustomerByContactNumber,onError);
+			CustomerService.searchCustomerByContactNumber($scope.customer.contactNumber).then(onSuccessSearchCustomerByContactNumber,onError);
 		};
 
 
@@ -54,20 +58,20 @@
 			$scope.customer="";
 			$scope.isCustomerCreationCollapsed = false;
 			$log.info("Result after webservice CustomerCreation call "+data);
-			customerService.searchCustomerById($scope.customerCreatedId).then(onSuccessSearchCustomerById,onError);
+			CustomerService.searchCustomerById($scope.customerCreatedId).then(onSuccessSearchCustomerById,onError);
 		}
 
 		$scope.saveCustomer = function(){
-			customerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
+			CustomerService.addUser($scope.customer,$scope.customerAddresses).then(onSuccessCustomerCreation,onError);
 		};
 
-		var onBookingFetchSuccess = function(data){
-			$scope.bookings = data;
+		var onFindAvailableRoomsSuccess = function(data){
+			$scope.availableRooms = data;
 			$scope.customerCreatedId = "";
-			$log.info("Result after Booking fetch service call "+data);
+			$log.info("Result after findAvailableRooms fetch service call "+data);
 		}
-		$scope.findBookingByDates = function() {
-			bookingService.findBookingByDates($scope.booking).then(onBookingFetchSuccess,onError);
+		$scope.findAvailableRooms = function() {
+			RoomService.getAllAvailableRooms($scope.booking).then(onFindAvailableRoomsSuccess,onError);
 		};
 
 		//changes for datepicker Start

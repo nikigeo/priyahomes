@@ -39,7 +39,7 @@ public class BookingDaoImpl implements  BookingDao {
         List<Booking> bookingList = new ArrayList<Booking>();
 
         if(null != fromDate && null != toDate){
-            bookingList = sessionFactory.getCurrentSession().createQuery("from Booking where startDate>=:stDate AND  endDate<:edDate ")
+            bookingList = sessionFactory.getCurrentSession().createQuery("from Booking where startDate>=:stDate AND  endDate<=:edDate ")
                     .setDate("stDate", convertDateFromString(fromDate)).setDate("edDate", convertDateFromString(toDate)).list();
         }
 

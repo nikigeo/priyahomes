@@ -34,10 +34,5 @@ public class BuildingController {
        return buildingApiFacade.getAllBuildings();
     }
 
-    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
-    @ResponseBody
-    public List<Building> getAllVerificationTypes()
-    {
-        return buildingApiFacade.getAllBuldings();
-    }
+
 }

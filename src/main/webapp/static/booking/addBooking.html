@@ -1,10 +1,13 @@
 <div id="addBooking">
     <form name="addBooking" >
+        <div ng-show="bookingCreatedId" style="color:green" >
+            <b>Booking created with ID {{bookingCreatedId}}</b>
+        </div>
         <fieldset>
             <legend> Create Booking</legend>
             <p>
                 <label class="field" for="From Date"><span>*</span>From Date</label>
-                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.fromDate" is-open="openFromDatePopup" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-change="findBookingByDates()"/>
+                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.fromDate" is-open="openFromDatePopup" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-change="findAvailableRooms()"/>
 
                 <button type="button" class="btn btn-default" ng-click="openFrmDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
 
@@ -12,7 +15,7 @@
 
             <p>
                 <label class="field" for="To Date"><span>*</span>To Date</label>
-                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.toDate" is-open="openToDatePopup" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"  ng-change="findBookingByDates()"/>
+                <input type="text" class="field" uib-datepicker-popup="{{format}}" ng-model="booking.toDate" is-open="openToDatePopup" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close"  ng-change="findAvailableRooms()"/>
 
                 <button type="button" class="btn btn-default" ng-click="openToDate($event)"><i class="glyphicon glyphicon-calendar"></i></button>
             </p>
@@ -21,7 +24,7 @@
             <p>
                 <label class="field">Room Details</label>
                 <select id="RoomSelector" ng-model="booking.room">
-                    <option ng-repeat="booking in bookings" value="{{booking.roomId}}">{{booking.roomId}}</option>
+                    <option ng-repeat="room in availableRooms" value="{{room.id}}">{{room.roomNumber}}</option>
                 </select>
             </p>
 
