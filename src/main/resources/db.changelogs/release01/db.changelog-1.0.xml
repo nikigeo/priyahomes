@@ -206,37 +206,6 @@
         </createTable>
     </changeSet>
     <changeSet id="9" author="Pradeesh" failOnError="true">
-        <comment>Create payment table</comment>
-        <createTable tableName="ph_payments">
-            <column name="id" type="int" autoIncrement="true">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="date" type="date">
-                <constraints nullable="false"/>
-            </column>
-            <column name="amount" type="decimal">
-                <constraints nullable="false"/>
-            </column>
-            <column name="paymenttype" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="booking" type="int">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ph_payments_pk" type="varchar(50)"/>
-        </createTable>
-        <addForeignKeyConstraint baseTableName="ph_payments"
-                                 baseColumnNames="paymenttype"
-                                 constraintName="ph_payments_ph_payment_types_fk"
-                                 referencedTableName="ph_payment_types"
-                                 referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="ph_payments"
-                                 baseColumnNames="booking"
-                                 constraintName="ph_payments_ph_booking_fk"
-                                 referencedTableName="ph_bookings"
-                                 referencedColumnNames="id"/>
-    </changeSet>
-    <changeSet id="10" author="Pradeesh" failOnError="true">
         <createTable tableName="ph_bookings">
             <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -256,7 +225,7 @@
             <column name="status" type="varchar(2)">
                 <constraints nullable="false"/>
             </column>
-                    </createTable>
+        </createTable>
         <addForeignKeyConstraint baseTableName="ph_bookings"
                                  baseColumnNames="room"
                                  constraintName="ph_bookings_ph_rooms_fk"
@@ -266,6 +235,36 @@
                                  baseColumnNames="customer"
                                  constraintName="ph_bookings_ph_customers_fk"
                                  referencedTableName="ph_customers"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+    <changeSet id="10" author="Pradeesh" failOnError="true">
+        <comment>Create payment table</comment>
+        <createTable tableName="ph_payments">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="amount" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="paymenttype" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="booking" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="ph_payments"
+                                 baseColumnNames="paymenttype"
+                                 constraintName="ph_payments_ph_payment_types_fk"
+                                 referencedTableName="ph_payment_types"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="ph_payments"
+                                 baseColumnNames="booking"
+                                 constraintName="ph_payments_ph_booking_fk"
+                                 referencedTableName="ph_bookings"
                                  referencedColumnNames="id"/>
     </changeSet>
 
