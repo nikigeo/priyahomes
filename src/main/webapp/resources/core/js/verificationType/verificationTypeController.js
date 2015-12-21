@@ -16,7 +16,6 @@
 	}
 
 	$scope.saveVerificationType = function(){
-
 		VerificationTypeService.addVerificationType($scope.verificationType).then(onSuccess,onError);
 	};
 

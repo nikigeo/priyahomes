@@ -23,12 +23,9 @@ public class VerificationTypeController {
 
     @RequestMapping(method = RequestMethod.POST, produces = {"application/json" })
     @ResponseBody
-    public ModelAndView createVerificationType(@RequestBody VerificationType verificationType){
+    public Integer createVerificationType(@RequestBody VerificationType verificationType){
 
-        verificationTypeApiFacade.insertVerificationType(verificationType);
-        ModelAndView model = new ModelAndView();
-        model.setViewName("homepage");
-        return model;
+        return verificationTypeApiFacade.insertVerificationType(verificationType);
 
     }
 

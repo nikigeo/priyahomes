@@ -6,6 +6,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Pradeesh on 12/6/2015.
  */
@@ -23,5 +25,10 @@ public class RoomDaoImpl implements RoomDao{
         roomId = (Integer)session.save(room);
         session.getTransaction().commit();
         return roomId;
+    }
+
+    public List<Room> getAllAvailableRooms() {
+
+        return sessionFactory.getCurrentSession().createQuery("from Room").list();
     }
 }

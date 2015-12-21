@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("v1/ph/buildings")
 public class BuildingController {
@@ -31,4 +33,6 @@ public class BuildingController {
     public List<Building> getAllBuildings(){
        return buildingApiFacade.getAllBuildings();
     }
+
+
 }

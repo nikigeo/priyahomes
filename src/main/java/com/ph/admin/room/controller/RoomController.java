@@ -4,10 +4,9 @@ import com.ph.admin.room.facade.RoomApiFacade;
 import com.ph.admin.room.model.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Pradeesh on 12/6/2015.
@@ -24,5 +23,13 @@ public class RoomController {
     @ResponseBody
     public int insertRoom(@RequestBody Room room) {
         return roomApiFacade.insertRoom(room);
+    }
+
+    @RequestMapping(value = "/getAvailableRooms/{fromDate}/{toDate}", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Room> getAllAvailableRooms(@PathVariable String fromDate ,
+                                           @PathVariable String toDate)
+    {
+        return roomApiFacade.getAllAvailableRooms(fromDate,toDate);
     }
 }

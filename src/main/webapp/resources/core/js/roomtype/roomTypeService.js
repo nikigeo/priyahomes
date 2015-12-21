@@ -12,8 +12,16 @@
 
         };
 
+        var getAllRoomTypes = function(){
+            return $http.get('/v1/ph/roomtype/getAll')
+            .then(function(response){
+                return response.data;
+            });
+        };
+
         return{
             addRoomType : addRoomType,
+            getAllRoomTypes : getAllRoomTypes
         };
 
     };

@@ -2,7 +2,7 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var RoomController = function($scope,$log,RoomService){
+	var RoomController = function($scope,$log,RoomService,RoomTypeService,BuildingService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
@@ -29,11 +29,11 @@
 	};
 
 	var getAllRoomTypes = function(){
-		RoomService.getAllRoomTypes().then(onSuccessRoomTypes,onError);
+		RoomTypeService.getAllRoomTypes().then(onSuccessRoomTypes,onError);
 	};
 
 	var getAllBuildings = function(){
-		RoomService.getAllBuildings().then(onSuccessBuildings,onError);
+		BuildingService.getAllBuildings().then(onSuccessBuildings,onError);
 	};
 
 	getAllRoomTypes();

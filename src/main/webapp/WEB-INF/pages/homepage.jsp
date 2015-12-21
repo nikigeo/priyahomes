@@ -7,18 +7,22 @@
     <script src="/resources/core/js/jquery-2.1.4.min.js"></script>
     <script src="/resources/core/js/bootstrap.min.js"></script>
     <script src="/resources/core/js/angular.min.js"></script>
-    <script src="/resources/core/js/angular-route.js"></script>
+    <script src="/resources/core/js/angular-route.min.js"></script>
     <script src="/resources/core/js/angular-animate.min.js"></script>
+    <script src="/resources/core/js/angular-touch.min.js"></script>
+    <script src="/resources/core/js/angular-sanitize.min.js"></script>
     <script src="/resources/core/js/ui-bootstrap-tpls-0.14.3.min.js"></script>
     <script src="/resources/core/js/app.js"></script>
-    <script src="/resources/core/js/customerService.js"></script>
-    <script src="/resources/core/js/customerController.js"></script>
-    <script src="/resources/core/js/verification/VerificationTypeService.js"></script>
-    <script src="/resources/core/js/verification/VerificationTypeController.js"></script>
+    <script src="/resources/core/js/customer/customerService.js"></script>
+    <script src="/resources/core/js/customer/customerController.js"></script>
+    <script src="/resources/core/js/verificationType/verificationTypeService.js"></script>
+    <script src="/resources/core/js/verificationType/verificationTypeController.js"></script>
     <script src="/resources/core/js/building/buildingService.js"></script>
     <script src="/resources/core/js/building/buildingController.js"></script>
-    <script src="/resources/core/js/room/roomTypeService.js"></script>
-    <script src="/resources/core/js/room/roomTypeController.js"></script>
+    <script src="/resources/core/js/booking/bookingService.js"></script>
+	<script src="/resources/core/js/booking/bookingController.js"></script>
+    <script src="/resources/core/js/roomtype/roomTypeService.js"></script>
+    <script src="/resources/core/js/roomtype/roomTypeController.js"></script>
     <script src="/resources/core/js/room/roomService.js"></script>
     <script src="/resources/core/js/room/roomController.js"></script>
 
@@ -36,6 +40,9 @@
 				<a href="#/search">Search Customer</a><hr>
 				<a href="#/addVerificationType">Create Verification Type</a><hr>
 				<a href="#/addBuilding">Add new Building</a><hr>
+				<a href="#/searchBookingAvailability">Add Booking</a><hr>
+
+
 				<a href="#/addRoomType">Add new Room Type</a><hr>
 				<a href="#/addRoom">Add new Room</a><hr>
 

@@ -4,6 +4,10 @@
 
 package com.ph.customer.model;
 
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -30,7 +34,7 @@ public class Customer implements java.io.Serializable{
     private String lastName;
 
     @Column(name = "dob")
-    private Date date = new Date();
+    private Date dateOfBirth ;
 
     @Column(name = "gender")
     private char gender;
@@ -45,12 +49,12 @@ public class Customer implements java.io.Serializable{
     private boolean indian;
 
     @Column(name = "verificationidtype")
-    private int verificationType;
+    private Integer verificationType;
 
     @Column(name = "verificationrefnumber")
     private String verificationNumber;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
     private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>();
 
 
@@ -85,14 +89,6 @@ public class Customer implements java.io.Serializable{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public char getGender() {
@@ -149,5 +145,13 @@ public class Customer implements java.io.Serializable{
 
     public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {
         this.customerAddresses = customerAddresses;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

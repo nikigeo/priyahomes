@@ -98,7 +98,9 @@ CREATE TABLE ph_payments (
 	amount numeric NOT NULL,
 	paymenttype int4 NOT NULL,
 	paymentrefnumber varchar(50),
+	booking int4 NOT NULL,
 	CONSTRAINT ph_payments_pk PRIMARY KEY (id),
+	CONSTRAINT ph_payments_ph_booking_fk FOREIGN KEY (booking) REFERENCES ph_bookings(id),
 	CONSTRAINT ph_payments_ph_payment_types_fk FOREIGN KEY (paymenttype) REFERENCES ph_payment_types(id)
 );
 
@@ -110,13 +112,15 @@ CREATE TABLE ph_bookings (
 	enddate date NOT NULL,
 	room int4 NOT NULL,
 	customer int4 NOT NULL,
-	status varchar(2) NOT NULL,
-	payment int4,
+	status varchar(2) NOT NULL
 	CONSTRAINT ph_bookings_pk PRIMARY KEY (id),
 	CONSTRAINT ph_bookings_ph_customers_fk FOREIGN KEY (customer) REFERENCES ph_customers(id),
-	CONSTRAINT ph_bookings_ph_payments_fk FOREIGN KEY (payment) REFERENCES ph_payments(id),
 	CONSTRAINT ph_bookings_ph_rooms_fk FOREIGN KEY (room) REFERENCES ph_rooms(id)
 );
 
 CREATE INDEX ph_bookings_pk_idx ON ph_bookings (id);
+
+ALTER TABLE ph_bookings DROP COLUMN payment;
+
+ALTER TABLE ph_payments ADD booking int NULL;
 
