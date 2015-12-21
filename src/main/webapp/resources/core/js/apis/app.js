@@ -4,35 +4,35 @@
     app.config(function($routeProvider,$httpProvider){
         $routeProvider
             .when("/addCustomer",{
-                templateUrl:"/static/customer/addCustomer.html",
+                templateUrl:"/jsps/customer/addCustomer.jsp",
                 controller : "CustomerController"
                 })
             .when("/home",{
-                templateUrl:"/static/home.html",
+                templateUrl:"/jsps/home.jsp",
                 controller : "CustomerController"
                 })
             .when("/addVerificationType",{
-                templateUrl:"/static/verificationType/addVerificationType.html",
+                templateUrl:"/jsps/verificationType/addVerificationType.jsp",
                 controller : "VerificationTypeController"
                 })
             .when("/search",{
-                templateUrl:"/static/customer/searchCustomer.html",
+                templateUrl:"/jsps/customer/searchCustomer.jsp",
                 controller : "CustomerController"
                 })
             .when("/addBuilding",{
-                templateUrl:"/static/building/addBuilding.jsp",
+                templateUrl:"/jsps/building/addBuilding.jsp",
                 controller : "BuildingController"
                 })
             .when("/searchBookingAvailability",{
-                 templateUrl:"/static/booking/addBooking.html",
+                 templateUrl:"/jsps/booking/addBooking.jsp",
                  controller : "BookingController"
                  })
             .when("/addRoomType",{
-                templateUrl:"/static/room/addRoomType.jsp",
+                templateUrl:"/jsps/room/addRoomType.jsp",
                 controller : "RoomTypeController"
                 })
             .when("/addRoom",{
-                templateUrl:"/static/room/addRoom.jsp",
+                templateUrl:"/jsps/room/addRoom.jsp",
                 controller : "RoomController"
                 })
             .otherwise({redirectTo:"/home"});
