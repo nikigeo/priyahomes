@@ -1,5 +1,5 @@
 (function(){
-    var app = angular.module("priyaHomesApp",["ngRoute","ngAnimate", "ui.bootstrap"]);
+    var app = angular.module("priyaHomesApp",["ngRoute","ngAnimate", "ui.bootstrap","bootstrapLightbox"]);
 
     app.config(function($routeProvider,$httpProvider){
         $routeProvider
