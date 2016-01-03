@@ -2,11 +2,18 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var BuildingController = function($scope,$log,BuildingService){
+	var BuildingController = function($scope,$log,ngDialog,BuildingService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
+		$scope.value = data;
 		$scope.building="";
+		ngDialog.open({
+			template: 'successPageId',
+			className: 'ngdialog-theme-default',
+			controller: 'BuildingController',
+			scope: $scope
+			});
 		$log.info("Result after webservice CustomerCreation call "+data);
 	}
 

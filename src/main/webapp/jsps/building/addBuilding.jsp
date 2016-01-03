@@ -1,6 +1,6 @@
 <%@ include file="../common/success.jsp" %>
 <%@ include file="../common/error.jsp" %>
-<div id="addBuilding" ng-hide="result">
+<div id="addBuilding">
     <form name="addBuilding" >
         <fieldset>
             <legend>Add Building Details</legend>
@@ -26,27 +26,4 @@
             </p>
         </fieldset>
     </form>
-    <fieldset ng-show="result">
-        <legend>Building</legend>
-        <table border="1">
-            <thead>
-            <tr>
-                <th>Building Id</th>
-                <th>Building Name</th>
-                <th>Street Name</th>
-                <th>Locality / State</th>
-                <th>Pincode</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>{{result.id}}</td>
-                <td>{{result.name}}</td>
-                <td>{{result.address1}}</td>
-                <td>{{result.address2}}</td>
-                <td>{{result.pincode}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </fieldset>
 </div>

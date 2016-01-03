@@ -33,6 +33,8 @@
 
     <link href="/resources/core/style/bootstrap.min.css" rel="stylesheet" />
     <link href="/resources/core/style/ngDialog.min.css" rel="stylesheet"/>
+    <link href="/resources/core/style/ngDialog-theme-default.min.css" rel="stylesheet"/>
+    <link href="/resources/core/style/ngDialog-theme-plain.min.css" rel="stylesheet"/>
 
   </head>
 <body>
