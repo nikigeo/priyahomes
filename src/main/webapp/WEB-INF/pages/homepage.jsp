@@ -12,7 +12,10 @@
     <script src="/resources/core/js/apis/angular-touch.min.js"></script>
     <script src="/resources/core/js/apis/angular-sanitize.min.js"></script>
     <script src="/resources/core/js/apis/ui-bootstrap-tpls-0.14.3.min.js"></script>
+    <script src="/resources/core/js/apis/ngDialog.min.js"></script>
+
     <script src="/resources/core/js/apis/app.js"></script>
+
     <script src="/resources/core/js/customer/customerService.js"></script>
     <script src="/resources/core/js/customer/customerController.js"></script>
     <script src="/resources/core/js/verificationType/verificationTypeService.js"></script>
@@ -29,6 +32,7 @@
     <link href="/resources/core/style/style.css" rel="stylesheet" />
 
     <link href="/resources/core/style/bootstrap.min.css" rel="stylesheet" />
+    <link href="/resources/core/style/ngDialog.min.css" rel="stylesheet"/>
 
   </head>
 <body>
