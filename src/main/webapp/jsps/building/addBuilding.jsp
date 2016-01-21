@@ -1,6 +1,5 @@
-<%@ include file="../common/success.jsp" %>
 <%@ include file="../common/error.jsp" %>
-<div id="addBuilding" ng-hide="result">
+<div id="addBuilding">
     <form name="addBuilding" ng-submit="saveBuilding()" >
         <fieldset>
             <legend>Add Building Details</legend>
@@ -27,3 +26,11 @@
         </fieldset>
     </form>
 </div>
+<script type="text/ng-template" id="popup.html">
+    <div style="color:green" >
+        <b>Record has been saved successfully</b>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">OK</button>
+    </div>
+</script>

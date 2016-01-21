@@ -2,12 +2,22 @@
 
  var app = angular.module("priyaHomesApp");
 
-	var BuildingController = function($scope,$log,BuildingService){
+	var BuildingController = function($scope,$log,$uibModal,BuildingService){
 
 	var onSuccess = function(data){
 		$scope.result = data;
 		$scope.building="";
 		$log.info("Result after webservice CustomerCreation call "+data);
+		var modalInstance = $uibModal.open({
+              animation: $scope.animationsEnabled,
+              templateUrl: 'popup.html',
+              controller: 'BuildingEditController',
+              resolve: {
+				editbuilding : function () {
+				  return data;
+				}
+			  }
+            });
 	}
 
 	var onError = function(reason){
@@ -17,13 +27,17 @@
 	$scope.saveBuilding = function(){
 		BuildingService.addBuilding($scope.building).then(onSuccess,onError);
 	};
+	$scope.cancel = function () {
+	  $uibModalInstance.dismiss('cancel');
+	};
+
 
 	$scope.building="";
 	$scope.result="";
 	$scope.error="";
 	};
 
- var BuildingEditController = function($scope,$log,$uibModal,BuildingService){
+ var BuildingViewController = function($scope,$log,$uibModal,BuildingService){
  		var onSuccess = function(data){
  			$scope.result = data;
  			$log.info("Result after webservice get building call "+data);
@@ -37,8 +51,8 @@
             var modalInstance = $uibModal.open({
               animation: true,
               templateUrl: 'myModalContent.html',
-              controller: 'BuildingEditController1',
-              size: 'lg',
+              controller: 'BuildingEditController',
+              size: 'sm',
               resolve: {
                   editbuilding : function () {
                     return building;
@@ -59,7 +73,7 @@
         	$scope.result="";
  	};
 
- 	var BuildingEditController1 = function($scope,$log,$uibModalInstance,BuildingService,editbuilding){
+ 	var BuildingEditController = function($scope,$log,$uibModalInstance,BuildingService,editbuilding){
  	    $scope.editbuilding = editbuilding;
 
  	    var onSuccessEdit = function(data){
@@ -86,7 +100,7 @@
  	};
 
 	app.controller("BuildingController",BuildingController);
+	app.controller("BuildingViewController",BuildingViewController);
 	app.controller("BuildingEditController",BuildingEditController);
-	app.controller("BuildingEditController1",BuildingEditController1);
 
 }());

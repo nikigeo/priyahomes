@@ -25,7 +25,7 @@
                 })
             .when("/editBuilding",{
                 templateUrl:"/jsps/building/editbuilding.jsp",
-                controller : "BuildingEditController"
+                controller : "BuildingViewController"
                 })
             .when("/searchBookingAvailability",{
                  templateUrl:"/jsps/booking/addBooking.jsp",
