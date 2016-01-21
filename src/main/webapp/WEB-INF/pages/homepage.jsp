@@ -40,6 +40,7 @@
 				<a href="#/search">Search Customer</a><hr>
 				<a href="#/addVerificationType">Create Verification Type</a><hr>
 				<a href="#/addBuilding">Add new Building</a><hr>
+				<a href="#/editBuilding">Edit Buildings</a><hr>
 				<a href="#/searchBookingAvailability">Add Booking</a><hr>
 				<a href="#/addRoomType">Add new Room Type</a><hr>
 				<a href="#/addRoom">Add new Room</a><hr>
