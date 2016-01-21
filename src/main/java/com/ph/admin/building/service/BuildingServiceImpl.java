@@ -14,17 +14,12 @@ public class BuildingServiceImpl implements BuildingService {
     @Autowired(required = true)
     private BuildingDao buildingDao;
 
-    public BuildingDao getBuildingDao() {
-        return buildingDao;
-    }
-
-    public void setBuildingDao(BuildingDao buildingDao) {
-        this.buildingDao = buildingDao;
-    }
-
-
     public int insertBuilding(final Building building) {
         return buildingDao.insertBuilding(building);
+    }
+
+    public void updateBuilding(final Building building) {
+        buildingDao.updateBuilding(building);
     }
 
     public List<Building> getAllBuildings() {
