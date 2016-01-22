@@ -18,8 +18,8 @@
                 <input type="text" ng-model="building.address2" required placeholder="Building Address2"/>
             </p>
             <p>
-                <label class="field" for="Building Address2"><span>*</span>Pin Code</label>
-                <input type="text" ng-model="building.pincode" required placeholder="Building Address2"/>
+                <label class="field" for="Building Pincode"><span>*</span>Pin Code</label>
+                <input type="text" ng-model="building.pincode" required placeholder="Building Pincode"/>
             </p>
             <p>
                 <input type="submit" value="Add Building" />
