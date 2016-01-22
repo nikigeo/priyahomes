@@ -27,7 +27,7 @@
         </table>
     </fieldset>
 </div>
-<script type="text/ng-template" id="myModalContent.html">
+<script type="text/ng-template" id="buildingEditContent.html">
     <div class="modal-header">
         <h3 class="modal-title">Edit Building Details</h3>
     </div>

@@ -17,8 +17,8 @@
     <script src="/resources/core/js/customer/customerController.js"></script>
     <script src="/resources/core/js/verificationType/verificationTypeService.js"></script>
     <script src="/resources/core/js/verificationType/verificationTypeController.js"></script>
-    <script src="/resources/core/js/building/buildingService.js"></script>
-    <script src="/resources/core/js/building/buildingController.js"></script>
+    <script src="/resources/core/js/building/service/buildingService.js"></script>
+    <script src="/resources/core/js/building/controller/buildingController.js"></script>
     <script src="/resources/core/js/booking/bookingService.js"></script>
 	<script src="/resources/core/js/booking/bookingController.js"></script>
     <script src="/resources/core/js/roomtype/roomTypeService.js"></script>

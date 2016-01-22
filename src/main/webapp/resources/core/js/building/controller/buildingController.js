@@ -10,7 +10,7 @@
 		$log.info("Result after webservice CustomerCreation call "+data);
 		var modalInstance = $uibModal.open({
               animation: $scope.animationsEnabled,
-              templateUrl: 'popup.html',
+              templateUrl: 'successpopup.html',
               controller: 'BuildingEditController',
               resolve: {
 				editbuilding : function () {
@@ -50,9 +50,9 @@
  		$scope.open = function (building) {
             var modalInstance = $uibModal.open({
               animation: true,
-              templateUrl: 'myModalContent.html',
+              templateUrl: 'buildingEditContent.html',
               controller: 'BuildingEditController',
-              size: 'sm',
+              size: 'lg',
               resolve: {
                   editbuilding : function () {
                     return building;
