@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface BuildingService {
     int insertBuilding(final Building building);
+    void updateBuilding(final Building building);
     List<Building> getAllBuildings();
 }

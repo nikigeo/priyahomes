@@ -28,6 +28,14 @@ public class BuildingController {
         return buildingId;
     }
 
+
+    @RequestMapping(value="/update", method = RequestMethod.POST, produces = {"application/json" })
+    @ResponseBody
+    public void updateBuilding(@RequestBody Building building)
+    {
+        buildingApiFacade.updateBuilding(building);
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/getAll")
     @ResponseBody
     public List<Building> getAllBuildings(){

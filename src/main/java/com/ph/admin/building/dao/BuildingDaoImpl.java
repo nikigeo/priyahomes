@@ -31,6 +31,13 @@ public class BuildingDaoImpl implements BuildingDao {
         return buildingId;
     }
 
+    public void updateBuilding(Building building) {
+        Session session = getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(building);
+        session.getTransaction().commit();
+    }
+
     public List<Building> getAllBuildings() {
         return sessionFactory.openSession().createQuery("from Building").list();
     }

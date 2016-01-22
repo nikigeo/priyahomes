@@ -23,6 +23,10 @@
                 templateUrl:"/jsps/building/addBuilding.jsp",
                 controller : "BuildingController"
                 })
+            .when("/editBuilding",{
+                templateUrl:"/jsps/building/editbuilding.jsp",
+                controller : "BuildingViewController"
+                })
             .when("/searchBookingAvailability",{
                  templateUrl:"/jsps/booking/addBooking.jsp",
                  controller : "BookingController"

@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface BuildingDao {
     int insertBuilding(final Building building);
+    void updateBuilding(final Building building);
     List<Building> getAllBuildings();
 }
