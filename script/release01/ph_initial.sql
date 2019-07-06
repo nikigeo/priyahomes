@@ -106,6 +106,7 @@ CREATE TABLE ph_payments (
 
 CREATE INDEX ph_payments_pk_idx ON ph_payments (id);
 
+--- create ph_booking tabble ----
 CREATE TABLE ph_bookings (
 	id serial NOT NULL,
 	startdate date NOT NULL,
