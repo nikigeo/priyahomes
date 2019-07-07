@@ -4,22 +4,67 @@
 
 package com.ph.customer.model;
 
-public class Customer {
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
 
-    private String customerId;
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name="ph_customers")
+public class Customer implements java.io.Serializable{
+
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "firstname")
     private String firstName;
-    private String lastName;
-    private String midName;
-    private String contactNumber;
-    private int age;
-    private boolean nonIndian;
 
-    public String getCustomerId() {
-        return customerId;
+    @Column(name = "midname")
+    private String midName;
+
+    @Column(name = "lastname")
+    private String lastName;
+
+    @Column(name = "dob")
+    private Date dateOfBirth ;
+
+    @Column(name = "gender")
+    private char gender;
+
+    @Column(name = "contactnumber")
+    private String contactNumber;
+
+    @Column(name = "emergencycontact")
+    private String emergencyContact;
+
+    @Column(name = "indian")
+    private boolean indian;
+
+    @Column(name = "verificationidtype")
+    private Integer verificationType;
+
+    @Column(name = "verificationrefnumber")
+    private String verificationNumber;
+
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
+    private Set<CustomerAddress> customerAddresses = new HashSet<CustomerAddress>();
+
+
+
+    public int getId() {
+        return id;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -30,6 +75,14 @@ public class Customer {
         this.firstName = firstName;
     }
 
+    public String getMidName() {
+        return midName;
+    }
+
+    public void setMidName(String midName) {
+        this.midName = midName;
+    }
+
     public String getLastName() {
         return lastName;
     }
@@ -38,12 +91,12 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getMidName() {
-        return midName;
+    public char getGender() {
+        return gender;
     }
 
-    public void setMidName(String midName) {
-        this.midName = midName;
+    public void setGender(char gender) {
+        this.gender = gender;
     }
 
     public String getContactNumber() {
@@ -54,20 +107,51 @@ public class Customer {
         this.contactNumber = contactNumber;
     }
 
-    public int getAge() {
-        return age;
+    public String getEmergencyContact() {
+        return emergencyContact;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setEmergencyContact(String emergencyContact) {
+        this.emergencyContact = emergencyContact;
     }
 
-    public boolean isNonIndian() {
-        return nonIndian;
+    public boolean isIndian() {
+        return indian;
     }
 
-    public void setNonIndian(boolean nonIndian) {
-        this.nonIndian = nonIndian;
+    public void setIndian(boolean indian) {
+        this.indian = indian;
     }
 
+    public int getVerificationType() {
+        return verificationType;
+    }
+
+    public void setVerificationType(int verificationType) {
+        this.verificationType = verificationType;
+    }
+
+    public String getVerificationNumber() {
+        return verificationNumber;
+    }
+
+    public void setVerificationNumber(String verificationNumber) {
+        this.verificationNumber = verificationNumber;
+    }
+
+    public Set<CustomerAddress> getCustomerAddresses() {
+        return customerAddresses;
+    }
+
+    public void setCustomerAddresses(Set<CustomerAddress> customerAddresses) {
+        this.customerAddresses = customerAddresses;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
 }

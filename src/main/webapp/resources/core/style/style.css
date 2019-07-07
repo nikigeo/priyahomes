@@ -1,0 +1,61 @@
+/* Styles go here */
+#topBanner { vertical-align: top;width: 100%;height: 150px;  }
+#mainContent { vertical-align: top;width: 100%;height: 700px; }
+#menuLinks {width: 20%; float: left;text-align: center;border-right-style: ridge;border-right-width: 2px;border-right-color: green; }
+#contentArea {margin: 0 auto; width: 78%; display: inline-block;}
+#addCustomer{padding-left: 50px;}
+
+label.field{
+
+}
+input.textbox-300{
+	width: 300px;
+	float: left;
+}
+fieldset p{
+	clear: both;
+
+}
+
+label span,.required{
+	color: red;
+
+}
+
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+  }
+  .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+  }
+
+  .typeahead-demo .custom-popup-wrapper {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+      display: none;
+      background-color: #f9f9f9;
+    }
+
+    .typeahead-demo .custom-popup-wrapper > .message {
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+      color: #868686;
+    }
+
+    .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+      position: static;
+      float: none;
+      display: block;
+      min-width: 160px;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
